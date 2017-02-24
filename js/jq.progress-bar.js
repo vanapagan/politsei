@@ -66,7 +66,6 @@
 				progressBar.attr('aria-valuenow', updateAVN);
 				srText.text(updateAVN + '% Complete');
 				$this.data('progress', '1');
-				console.log('AVN is: ' + updateAVN);
 			} else if (! $this.val() ) { // If the field value is emptied, we need to remove that progress.
 				$this.data('progress', '0');
 				avnMath = parseFloat(avn) - parseFloat(magicNumber);
@@ -75,7 +74,6 @@
 				progressBar.width(pbWidth + '%');
 				progressBar.attr('aria-valuenow', updateAVN);
 				srText.text(updateAVN + '% Complete');
-				console.log('AVN is: ' + updateAVN);
 			}
 			
 			for (var key in options.message) {
@@ -86,7 +84,6 @@
 				}
 				if (updateAVN >= keyMatch) {
 					encouragement.html(value);
-					console.log(key + ' : ' + value);
 				}
 			}
 
