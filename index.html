@@ -10,7 +10,10 @@
 </head>
 
 <body ng-controller="formController" class="container" ng-app="policeApp"> <br />
+
     <form class="form-horizontal" role="form">
+
+        <h2>Teataja</h2>
 
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Eesnimi:</label>
@@ -37,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            <label for="dateOfBirth" class="col-sm-3 control-label">Sünniaegs</label>
+            <label for="dateOfBirth" class="col-sm-3 control-label">Sünniaeg:</label>
             <div class="col-sm-2">
                 <input type="date" id="dateOfBirth" class="form-control" ng-model="application.dateOfBirth" />
             </div>
@@ -65,12 +68,82 @@
         <div class="form-group">
             <label for="address" class="col-sm-3 control-label">Elukoha aadress:</label>
             <div class="col-sm-6">
-                <!--input type="text" id="address" class="form-control" ng-model="application.address" /-->
-                <input type="text" id="address" class="form-control" ng-model="chosenPlace" placeholder="" googleplace />
+                <input type="text" id="address" class="form-control" ng-model="application.address" />
             </div>
             <div class="col-sm-3"></div>
         </div>
 
+        <div class="form-group">
+            <label for="postcode" class="col-sm-3 control-label">Sihtnumber:</label>
+            <div class="col-sm-6">
+                <input type="text" id="postcode" class="form-control" ng-model="application.postcode" />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="county" class="col-sm-3 control-label">Maakond:</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="application.county">
+                    <option ng-repeat="county in counties" value="{{county.id}}">{{county.name}}</option>
+                </select>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="contactManner" class="col-sm-3 control-label">Sobiv viis kontakteerumiseks:</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="application.contact_manner">
+                    <option ng-repeat="cm in contact_manners" value="{{cm.id}}">{{cm.name}}</option>
+                </select>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="contactTime" class="col-sm-3 control-label">Sobiv aeg kontakteerumiseks:</label>
+            <div class="col-sm-6">
+                <input type="text" id="contactTime" class="form-control" ng-model="application.contact_time" />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">E-post:</label>
+            <div class="col-sm-6">
+                <input type="email" id="email" class="form-control" ng-model="application.email" required />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="telephone" class="col-sm-3 control-label">Telefon:</label>
+            <div class="col-sm-6">
+                <input type="email" id="telephone" class="form-control" ng-model="application.telephone" required />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="telephone" class="col-sm-3 control-label">Telefon:</label>
+            <div class="col-sm-6">
+                <input type="che" id="telephone" class="form-control" ng-model="application.telephone" required />
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="personIsJur" class="col-sm-3 control-label">Kannatanu on juriidiline isik:</label>
+            <div class="col-sm-1">
+                <input type="checkbox" id="personIsJur" class="form-control" ng-model="application.person_is_jur" />
+            </div>
+            <div class="col-sm-5"></div>
+        </div>
+
+        <script>
+            calculateCitizenships()
+        </script>
     </form>
 </body>
 

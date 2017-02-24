@@ -1,0 +1,17 @@
+[{ id: 0, name:"-"},
+{ id: 1, name:"Harju maakond"},
+{ id: 2, name:"Hiiu maakond"},
+{ id: 3, name:"Ida-Viru maakond"},
+{ id: 4, name:"Jõgeva maakond"},
+{ id: 5, name:"Järva maakond"},
+{ id: 6, name:"Lääne maakond"},
+{ id: 7, name:"Lääne-Viru maakond"},
+{ id: 8, name:"Põlva maakond"},
+{ id: 9, name:"Pärnu maakond"},
+{ id: 10, name:"Rapla maakond"},
+{ id: 11, name:"Saare maakond"},
+{ id: 12, name:"Tartu maakond"},
+{ id: 13, name:"Valga maakond"},
+{ id: 14, name:"Viljandi maakond"},
+{ id: 15, name:"Võru maakond"}
+];
