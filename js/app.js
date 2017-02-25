@@ -305,7 +305,6 @@ policeApp.controller('formController', function ($scope, $http) {
     };
 
     $scope.isSelected = function(value) {
-        console.log(value);
         return $scope.radioCurrent==value;
     }
 
@@ -331,6 +330,10 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.place = 'kortermaja';
     $scope.desc = 'Minu rahakott varastati ära';
     $scope.damage = 35;
+
+    $scope.submit = function() {
+        console.log('tere');
+    }
 
 });
 

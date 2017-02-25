@@ -30,7 +30,6 @@
                     <h2>Teataja</h2>
                 </div>
 
-
                 <div>
                     <md-input-container>
                         <label>Eesnimi</label>
@@ -123,88 +122,84 @@
                     </md-input-container>
                 </div>
 
-
-
                 <md-input-container>
                     <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
                 </md-input-container>
-
 
                 <div class="md-block">
                     <h2>Sündmus</h2>
                 </div>
 
                 <div>
-                    <div>
-                        <div>
-                            <md-input-container>
-                                <label>Kuupäev</label>
-                                <md-datepicker ng-model="dateOfIncident"></md-datepicker>
-                            </md-input-container>
+                    <md-input-container>
+                        <label>Kuupäev</label>
+                        <md-datepicker ng-model="dateOfIncident"></md-datepicker>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Kellaaeg</label>
+                        <input ng-model="timeOfIncident" type="time">
+                    </md-input-container>
+                </div>
 
-                            <md-input-container>
-                                <label>Kellaaeg</label>
-                                <input ng-model="timeOfIncident" type="time">
-                            </md-input-container>
-                        </div>
+                <div>
+                    <md-input-container>
+                        <label>Prefektuur</label>
+                        <md-select ng-model="police_area">
+                            <md-option ng-repeat="area in police_areas" value="{{area.id}}">
+                                {{area.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
 
-                        <div>
-                            <md-input-container>
-                                <label>Prefektuur</label>
-                                <md-select ng-model="police_area">
-                                    <md-option ng-repeat="area in police_areas" value="{{area.id}}">
-                                        {{area.name}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
+                <div>
+                    <md-input-container>
+                        <label>Riik</label>
+                        <md-select ng-model="country">
+                            <md-option ng-repeat="country in citizenships" value="{{country.id}}">
+                                {{country.name}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
 
-                        <div>
-                            <md-input-container>
-                                <label>Riik</label>
-                                <md-select ng-model="country">
-                                    <md-option ng-repeat="country in citizenships" value="{{country.id}}">
-                                        {{country.name}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
-
-                        <div>
-                            <md-input-container>
-                                <label>Aadress</label>
-                                <input ng-model="incidentAddress" type="text">
-                            </md-input-container>
-
-                            <md-input-container>
-                                <label>Toimumise koht</label>
-                                <input ng-model="place" type="text">
-                            </md-input-container>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <md-input-container>
-                                <label>Toimunu kirjeldus</label>
-                                <textarea ng-model="desc" required md-asterisk></textarea>
-                            </md-input-container>
-                        </div>
-                        <div>
-                            <md-input-container>
-                                <label>Tekitatud varaline kahju €</label>
-                                <input ng-model="damage" type="number">
-                            </md-input-container>
-                        </div>
-                    </div>
-
-                    <md-input-container layout="column">
-                        <md-checkbox ng-model="kokkuleppemenetlus" aria-label="Olen nõus kokkuleppemenetlusega ">Olen nõus kokkuleppemenetlusega</md-checkbox>
-                        <md-checkbox ng-model="docs_to_email" aria-label="Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile">Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile</md-checkbox>
-                        <md-checkbox ng-model="e_toimik" aria-label="Soovin teavet E-Toimiku kaudu https://www.e-toimik.ee/">Soovin teavet E-Toimiku kaudu <a href="https://www.e-toimik.ee/">https://www.e-toimik.ee/</a></md-checkbox>
+                <div>
+                    <md-input-container>
+                        <label>Aadress</label>
+                        <input ng-model="incidentAddress" type="text">
                     </md-input-container>
 
+                    <md-input-container>
+                        <label>Toimumise koht</label>
+                        <input ng-model="place" type="text">
+                    </md-input-container>
                 </div>
+
+                <div>
+                    <div>
+                        <md-input-container>
+                            <label>Toimunu kirjeldus</label>
+                            <textarea ng-model="desc" required md-asterisk></textarea>
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label>Tekitatud varaline kahju €</label>
+                            <input ng-model="damage" type="number">
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <md-input-container layout="column">
+                    <md-checkbox ng-model="kokkuleppemenetlus" aria-label="Olen nõus kokkuleppemenetlusega ">Olen nõus kokkuleppemenetlusega</md-checkbox>
+                    <md-checkbox ng-model="docs_to_email" aria-label="Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile">Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile</md-checkbox>
+                    <md-checkbox ng-model="e_toimik" aria-label="Soovin teavet E-Toimiku kaudu https://www.e-toimik.ee/">Soovin teavet E-Toimiku kaudu <a href="https://www.e-toimik.ee/">https://www.e-toimik.ee/</a></md-checkbox>
+                </md-input-container>
+
+                <div>
+                    <md-button type="submit">Kinnita allkirjastamata</md-button>
+                </div>
+
             </form>
         </md-content>
     </div>
