@@ -332,7 +332,7 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.damage = 35;
 
     $scope.submit = function() {
-        console.log('tere');
+        console.log('submit form');
     }
 
 });

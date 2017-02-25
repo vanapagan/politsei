@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles/form.css">
 
     <title>Politseile avalduse esitamine</title>
 </head>
@@ -25,135 +26,148 @@
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <md-content layout-padding>
             <form role="form" ng-submit="submit()">
+                <div layout="row" layout-wrap>
 
-                <div class="md-block">
-                    <h2>Teataja</h2>
-                </div>
+                    <div flex="100">
+                        <h2>Teataja</h2>
+                    </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Eesnimi</label>
-                        <input ng-model="firstName" type="text" required md-asterisk>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Perekonnanimi</label>
-                        <input ng-model="lastName" type="text" required md-asterisk>
-                    </md-input-container>
-                </div>
-
-
-                <div>
-                    <md-radio-group ng-model="radioCurrent" layout="column">
-                        <md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
-                        <md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
+                    <div layout="column">
                         <div>
-                            <md-input-container ng-show="isSelected(0)">
-                                <label>Isikukood</label>
-                                <input ng-model="idCode" type="text" required md-asterisk>
+                            <md-input-container>
+                                <label>Eesnimi</label>
+                                <input ng-model="firstName" type="text" required md-asterisk>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Perekonnanimi</label>
+                                <input ng-model="lastName" type="text" required md-asterisk>
                             </md-input-container>
                         </div>
+
                         <div>
-                            <md-input-container ng-show="isSelected(1)">
-                                <label>Sünniaeg</label>
-                                <md-datepicker ng-model="dateOfBirth" required md-asterisk></md-datepicker>
-                            </md-input-container>
+                            <md-radio-group ng-model="radioCurrent" layout="row">
+                                <div flex="30">
+                                    <md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
+                                    <md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
+                                </div>
+                                <div flex="50">
+                                    <div>
+                                        <md-input-container ng-show="isSelected(0)">
+                                            <label>Isikukood</label>
+                                            <input ng-model="idCode" type="text" required md-asterisk>
+                                        </md-input-container>
+                                    </div>
+                                    <div>
+                                        <md-input-container ng-show="isSelected(1)">
+                                            <label>Sünniaeg</label>
+                                            <md-datepicker ng-model="dateOfBirth" required md-asterisk></md-datepicker>
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                            </md-radio-group>
                         </div>
-                    </md-radio-group>
-                </div>
+                    </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Amet</label>
-                        <input ng-model="occupation" type="text">
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Kodakondsus</label>
-                        <md-select ng-model="citizenship">
-                            <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
-                                {{citizenship.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
+                    <div layout="column" flex="50">
+                        <div flex="50">
+                            <div flex="100">
+                                <md-input-container>
+                                    <label>Amet</label>
+                                    <input ng-model="occupation" type="text">
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Kodakondsus</label>
+                                    <md-select ng-model="citizenship">
+                                        <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
+                                            {{citizenship.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div flex="50">
+                            <div>
+                                <md-input-container>
+                                    <label>Elukoha aadress</label>
+                                    <input ng-model="address" type="text">
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Maakond</label>
+                                    <md-select ng-model="county">
+                                        <md-option ng-repeat="county in counties" value="{{county.id}}">
+                                            {{county.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <md-input-container>
+                                    <label>Sihtnumber</label>
+                                    <input ng-model="postcode" type="text">
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Elukoha aadress</label>
-                        <input ng-model="address" type="text">
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Sihtnumber</label>
-                        <input ng-model="postcode" type="text">
-                    </md-input-container>
-                </div>
+                    <div>
+                        <md-input-container>
+                            <label>Sobiv viis kontakteerumiseks</label>
+                            <md-select ng-model="contact_manner">
+                                <md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
+                                    {{cm.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Sobiv aeg kontakteerumiseks</label>
+                            <input ng-model="contact_time" type="text">
+                        </md-input-container>
+                    </div>
 
-                <md-input-container>
-                    <label>Maakond</label>
-                    <md-select ng-model="county">
-                        <md-option ng-repeat="county in counties" value="{{county.id}}">
-                            {{county.name}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
+                    <div>
+                        <md-input-container>
+                            <label>E-post</label>
+                            <input ng-model="email" type="text" required md-asterisk>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Telefon:</label>
+                            <input ng-model="phone" type="text" required md-asterisk>
+                        </md-input-container>
+                    </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Sobiv viis kontakteerumiseks</label>
-                        <md-select ng-model="contact_manner">
-                            <md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
-                                {{cm.name}}
-                            </md-option>
-                        </md-select>
+                    <md-input-container flex="100">
+                        <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
                     </md-input-container>
-                    <md-input-container>
-                        <label>Sobiv aeg kontakteerumiseks</label>
-                        <input ng-model="contact_time" type="text">
-                    </md-input-container>
-                </div>
 
-                <div>
-                    <md-input-container>
-                        <label>E-post</label>
-                        <input ng-model="email" type="text" required md-asterisk>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Telefon:</label>
-                        <input ng-model="phone" type="text" required md-asterisk>
-                    </md-input-container>
-                </div>
+                    <div class="md-block" flex="100">
+                        <h2>Sündmuse toimumise aeg</h2>
+                    </div>
 
-                <md-input-container>
-                    <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
-                </md-input-container>
+                    <div>
+                        <md-input-container>
+                            <label>Kuupäev</label>
+                            <md-datepicker ng-model="dateOfIncident"></md-datepicker>
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Kellaaeg</label>
+                            <input ng-model="timeOfIncident" type="time">
+                        </md-input-container>
+                    </div>
 
-                <div class="md-block">
-                    <h2>Sündmus</h2>
-                </div>
+                    <div class="md-block" flex="100">
+                        <h2>Sündmuse toimumise koht</h2>
+                    </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Kuupäev</label>
-                        <md-datepicker ng-model="dateOfIncident"></md-datepicker>
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Kellaaeg</label>
-                        <input ng-model="timeOfIncident" type="time">
-                    </md-input-container>
-                </div>
+                    <div flex="100">
+                        <md-input-container>
+                            <label>Prefektuur</label>
+                            <md-select ng-model="police_area">
+                                <md-option ng-repeat="area in police_areas" value="{{area.id}}">
+                                    {{area.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Prefektuur</label>
-                        <md-select ng-model="police_area">
-                            <md-option ng-repeat="area in police_areas" value="{{area.id}}">
-                                {{area.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-                <div>
-                    <md-input-container>
+                    <md-input-container flex="33">
                         <label>Riik</label>
                         <md-select ng-model="country">
                             <md-option ng-repeat="country in citizenships" value="{{country.id}}">
@@ -161,45 +175,42 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-                </div>
 
-                <div>
-                    <md-input-container>
-                        <label>Aadress</label>
-                        <input ng-model="incidentAddress" type="text">
-                    </md-input-container>
-
-                    <md-input-container>
-                        <label>Toimumise koht</label>
-                        <input ng-model="place" type="text">
-                    </md-input-container>
-                </div>
-
-                <div>
-                    <div>
+                    <div flex="100">
                         <md-input-container>
-                            <label>Toimunu kirjeldus</label>
-                            <textarea ng-model="desc" required md-asterisk></textarea>
+                            <label>Toimumise koht</label>
+                            <input ng-model="place" type="text">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Aadress</label>
+                            <input ng-model="incidentAddress" type="text">
                         </md-input-container>
                     </div>
+
+                    <md-input-container flex="100">
+                        <label>Toimunu kirjeldus</label>
+                        <textarea ng-model="desc" required md-asterisk></textarea>
+                    </md-input-container>
+
+                    <md-input-container flex="20">
+                        <label>Tekitatud varaline kahju €</label>
+                        <input ng-model="damage" type="number">
+                    </md-input-container>
+
+                    <div class="md-block" flex="100">
+                        <h2>Täiendavad andmed</h2>
+                    </div>
+
+                    <md-input-container layout="column" flex="100">
+                        <md-checkbox ng-model="kokkuleppemenetlus" aria-label="Olen nõus kokkuleppemenetlusega ">Olen nõus kokkuleppemenetlusega</md-checkbox>
+                        <md-checkbox ng-model="docs_to_email" aria-label="Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile">Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile</md-checkbox>
+                        <md-checkbox ng-model="e_toimik" aria-label="Soovin teavet E-Toimiku kaudu https://www.e-toimik.ee/">Soovin teavet E-Toimiku kaudu <a href="https://www.e-toimik.ee/">https://www.e-toimik.ee/</a></md-checkbox>
+                    </md-input-container>
+
                     <div>
-                        <md-input-container>
-                            <label>Tekitatud varaline kahju €</label>
-                            <input ng-model="damage" type="number">
-                        </md-input-container>
+                        <md-button type="submit">Kinnita allkirjastamata</md-button>
                     </div>
                 </div>
-
-                <md-input-container layout="column">
-                    <md-checkbox ng-model="kokkuleppemenetlus" aria-label="Olen nõus kokkuleppemenetlusega ">Olen nõus kokkuleppemenetlusega</md-checkbox>
-                    <md-checkbox ng-model="docs_to_email" aria-label="Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile">Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile</md-checkbox>
-                    <md-checkbox ng-model="e_toimik" aria-label="Soovin teavet E-Toimiku kaudu https://www.e-toimik.ee/">Soovin teavet E-Toimiku kaudu <a href="https://www.e-toimik.ee/">https://www.e-toimik.ee/</a></md-checkbox>
-                </md-input-container>
-
-                <div>
-                    <md-button type="submit">Kinnita allkirjastamata</md-button>
-                </div>
-
             </form>
         </md-content>
     </div>
