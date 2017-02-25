@@ -298,16 +298,6 @@ policeApp.controller('formController', function ($scope, $http) {
         { id: 4, name: "Lääne Prefektuur" }
     ];
 
-    $scope.radioCurrent = 0;
-
-    $scope.selectRadio = function(value) {
-        $scope.radioCurrent = value;
-    };
-
-    $scope.isSelected = function(value) {
-        return $scope.radioCurrent==value;
-    }
-
     $scope.firstName = 'Kristo';
     $scope.lastName = 'Palo';
     $scope.idCode = '39312245336';

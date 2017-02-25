@@ -40,17 +40,13 @@
                         </div>
                     </md-content>
 
-                    <md-content layout="column" layout-padding>
+                    <md-content layout-padding>
                         <div>
-                            <md-radio-group ng-model="radioCurrent" layout="column">
-                                <md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
-                                <md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
-                            </md-radio-group>
-                            <md-input-container ng-show="isSelected(0)">
+                            <md-input-container>
                                 <label>Isikukood</label>
                                 <input ng-model="idCode" type="text">
                             </md-input-container>
-                            <md-input-container ng-show="isSelected(1)">
+                            <md-input-container>
                                 <label>Sünniaeg</label>
                                 <md-datepicker ng-model="dateOfBirth"></md-datepicker>
                             </md-input-container>
