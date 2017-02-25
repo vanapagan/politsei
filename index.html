@@ -24,49 +24,45 @@
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <form role="form" ng-submit="submit()">
             <h2>Teataja</h2>
-            <div layout="row" layout-xs="column">
-                <div flex>
+            <div layout="column">
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                <div>
+                    <md-content layout-padding>
                         <div>
-
                             <md-input-container>
                                 <label>Eesnimi</label>
-                                <input ng-model="firstName" type="text">
+                                <input ng-model="firstName" type="text" required md-asterisk>
                             </md-input-container>
-
                             <md-input-container>
                                 <label>Perekonnanimi</label>
-                                <input ng-model="lastName" type="text">
+                                <input ng-model="lastName" type="text" required md-asterisk>
                             </md-input-container>
-
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout="column" layout-padding>
                         <div>
-
-                            <md-input-container>
+                            <md-radio-group ng-model="radioCurrent" layout="column">
+                                <md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
+                                <md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
+                            </md-radio-group>
+                            <md-input-container ng-show="isSelected(0)">
                                 <label>Isikukood</label>
                                 <input ng-model="idCode" type="text">
                             </md-input-container>
-
-                            <md-input-container>
+                            <md-input-container ng-show="isSelected(1)">
                                 <label>Sünniaeg</label>
                                 <md-datepicker ng-model="dateOfBirth"></md-datepicker>
                             </md-input-container>
-
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
-
                             <md-input-container>
                                 <label>Amet</label>
                                 <input ng-model="occupation" type="text">
                             </md-input-container>
-
                             <md-input-container>
                                 <label>Kodakondsus</label>
                                 <md-select ng-model="citizenship">
@@ -75,20 +71,17 @@
                                     </md-option>
                                 </md-select>
                             </md-input-container>
-
                         </div>
                     </md-content>
-
                 </div>
-                <div flex>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                <div>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Elukoha aadress</label>
                                 <input ng-model="address" type="text">
                             </md-input-container>
-
                             <md-input-container>
                                 <label>Sihtnumber</label>
                                 <input ng-model="postcode" type="text">
@@ -96,7 +89,7 @@
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Maakond</label>
@@ -106,11 +99,10 @@
                                     </md-option>
                                 </md-select>
                             </md-input-container>
-
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Sobiv viis kontakteerumiseks</label>
@@ -120,7 +112,6 @@
                                     </md-option>
                                 </md-select>
                             </md-input-container>
-
                             <md-input-container>
                                 <label>Sobiv aeg kontakteerumiseks</label>
                                 <input ng-model="contact_time" type="text">
@@ -129,34 +120,34 @@
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>E-post</label>
-                                <input ng-model="email" type="text">
+                                <input ng-model="email" type="text" required md-asterisk>
                             </md-input-container>
-
                             <md-input-container>
                                 <label>Telefon:</label>
-                                <input ng-model="phone" type="text">
+                                <input ng-model="phone" type="text" required md-asterisk>
                             </md-input-container>
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
                             </md-input-container>
                         </div>
                     </md-content>
-
                 </div>
+
             </div>
             <h2>Sündmus</h2>
-            <div layout="row" layout-xs="column">
-                <div flex>
-                    <md-content layout-gt-sm="row" layout-padding>
+            <div layout="column">
+
+                <div>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Kuupäev</label>
@@ -170,7 +161,7 @@
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Prefektuur</label>
@@ -183,7 +174,7 @@
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Riik</label>
@@ -196,7 +187,7 @@
                         </div>
                     </md-content>
 
-                    <md-content layout-gt-sm="row" layout-padding>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Aadress</label>
@@ -209,14 +200,19 @@
                             </md-input-container>
                         </div>
                     </md-content>
+                </div>
 
-                    <md-content layout-gt-sm="column" layout-padding>
+                <div>
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Toimunu kirjeldus</label>
-                                <textarea ng-model="desc"></textarea>
+                                <textarea ng-model="desc" required md-asterisk></textarea>
                             </md-input-container>
                         </div>
+                    </md-content>
+
+                    <md-content layout-padding>
                         <div>
                             <md-input-container>
                                 <label>Tekitatud varaline kahju €</label>
@@ -225,8 +221,10 @@
                         </div>
                     </md-content>
                 </div>
+
             </div>
-        </form>
+    </div>
+    </form>
     </div>
     <!--script>
         $(document).ready(function () {

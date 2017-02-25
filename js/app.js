@@ -298,11 +298,21 @@ policeApp.controller('formController', function ($scope, $http) {
         { id: 4, name: "Lääne Prefektuur" }
     ];
 
+    $scope.radioCurrent = 0;
+
+    $scope.selectRadio = function(value) {
+        $scope.radioCurrent = value;
+    };
+
+    $scope.isSelected = function(value) {
+        return $scope.radioCurrent==value;
+    }
+
     $scope.firstName = 'Kristo';
     $scope.lastName = 'Palo';
     $scope.idCode = '39312245336';
     $scope.dateOfBirth = new Date('1993-12-23T22:00:00.000Z');
-    $scope.occupation = 'Arendaja';
+    $scope.occupation = 'Õpilane';
     $scope.citizenship = 1;
     $scope.address = 'Tallinn';
     $scope.postcode = '123456';
