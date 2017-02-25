@@ -329,7 +329,7 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.country = 1;
     $scope.incidentAddress = 'Vabaduse pst 123';
     $scope.place = 'kortermaja';
-    $scope.desc = 'Rahakott varastati ära';
+    $scope.desc = 'Minu rahakott varastati ära';
     $scope.damage = 35;
 
 });
