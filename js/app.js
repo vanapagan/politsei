@@ -1,4 +1,4 @@
-var policeApp = angular.module('policeApp', ['ui.bootstrap']);
+var policeApp = angular.module('policeApp', ['ngMaterial', 'ui.bootstrap']);
 
 policeApp.controller('formController', function ($scope, $http) {
 
@@ -290,15 +290,13 @@ policeApp.controller('formController', function ($scope, $http) {
         { id: 1, name: "telefoni teel" }
     ];
 
-    $scope.areas = [
+    $scope.police_areas = [
         { id: 0, name: "Üldine kontakt" },
         { id: 1, name: "Põhja Prefektuur" },
         { id: 2, name: "Lõuna Prefektuur" },
         { id: 3, name: "Ida Prefektuur" },
         { id: 4, name: "Lääne Prefektuur" }
     ];
-
-    $scope.tere = 'tere123';
 
 });
 

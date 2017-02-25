@@ -5,20 +5,45 @@
     <meta charset="UTF-8">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/jq.progress-bar.js"></script>
-    <script src="js/angular.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/ui-bootstrap-tpls-0.4.0.js"></script>
 
     <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 </head>
 
-<body>
-    <div ng-controller="formController" class="container">
-        <form class="form-horizontal" role="form" id="mainForm">
+<body><br />
+    <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
+        <md-content layout-gt-sm="row" layout-padding>
+            <div>
+
+                <md-input-container>
+                    <label>Eesnimi</label>
+                    <input ng-model="application.firstName" type="text">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Perekonnanimi</label>
+                    <input ng-model="application.lastName" type="text">
+                </md-input-container>
+                
+            </div>
+        </md-content>
+    </div>
+    <!--div ng-controller="formController" class="container">
+        <form class="form-horizontal" role="form" id="mainForm" ng-submit="submit()">
             <tabset>
                 <tab heading="Teataja">
                     <div ng-form="victimForm">
+
                         <h2>Teataja</h2>
+
                         <div class="form-group">
                             <label for="firstName" class="col-sm-3 control-label">Eesnimi:</label>
                             <div class="col-sm-6">
@@ -161,8 +186,8 @@
                         <div class="form-group">
                             <label for="area" class="col-sm-3 control-label">Prefektuur:</label>
                             <div class="col-sm-6">
-                                <select class="form-control" ng-model="application.area">
-                    <option ng-repeat="area in areas" value="{{area.id}}">{{area.name}}</option>
+                                <select class="form-control" ng-model="application.police_area">
+                    <option ng-repeat="area in police_areas" value="{{area.id}}">{{area.name}}</option>
                 </select>
                             </div>
                             <div class="col-sm-3"></div>
@@ -213,21 +238,19 @@
                     </div>
                 </tab>
             </tabset>
-
         </form>
         <br />
-    </div>
+    </div-->
     <script>
         $(document).ready(function () {
             $('#mainForm').showProgress({
                 message: {
-                    '25': 'Veerand on tehtud!',
+                    '25': 'Veerand on valmis!',
                     '50': 'Oled poolel teel!',
                     '75': 'Kõigest natuke veel!',
                     '100': 'Ja ongi valmis!'
                 },
                 position: 'bottom'
-
             });
         });
     </script>
