@@ -32,12 +32,12 @@
 
                             <md-input-container>
                                 <label>Eesnimi</label>
-                                <input ng-model="application.firstName" type="text">
+                                <input ng-model="firstName" type="text">
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Perekonnanimi</label>
-                                <input ng-model="application.lastName" type="text">
+                                <input ng-model="lastName" type="text">
                             </md-input-container>
 
                         </div>
@@ -48,12 +48,12 @@
 
                             <md-input-container>
                                 <label>Isikukood</label>
-                                <input ng-model="application.idCode" type="text">
+                                <input ng-model="idCode" type="text">
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Sünniaeg</label>
-                                <md-datepicker ng-model="application.dateOfBirth"></md-datepicker>
+                                <md-datepicker ng-model="dateOfBirth"></md-datepicker>
                             </md-input-container>
 
                         </div>
@@ -64,12 +64,12 @@
 
                             <md-input-container>
                                 <label>Amet</label>
-                                <input ng-model="application.occupation" type="text">
+                                <input ng-model="occupation" type="text">
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Kodakondsus</label>
-                                <md-select ng-model="application.citizenship">
+                                <md-select ng-model="citizenship">
                                     <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
                                         {{citizenship.name}}
                                     </md-option>
@@ -86,12 +86,12 @@
                         <div>
                             <md-input-container>
                                 <label>Elukoha aadress</label>
-                                <input ng-model="application.address" type="text">
+                                <input ng-model="address" type="text">
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Sihtnumber</label>
-                                <input ng-model="application.postcode" type="text">
+                                <input ng-model="postcode" type="text">
                             </md-input-container>
                         </div>
                     </md-content>
@@ -100,7 +100,7 @@
                         <div>
                             <md-input-container>
                                 <label>Maakond</label>
-                                <md-select ng-model="application.county">
+                                <md-select ng-model="county">
                                     <md-option ng-repeat="county in counties" value="{{county.id}}">
                                         {{county.name}}
                                     </md-option>
@@ -114,7 +114,7 @@
                         <div>
                             <md-input-container>
                                 <label>Sobiv viis kontakteerumiseks</label>
-                                <md-select ng-model="application.contact_manner">
+                                <md-select ng-model="contact_manner">
                                     <md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
                                         {{cm.name}}
                                     </md-option>
@@ -123,7 +123,7 @@
 
                             <md-input-container>
                                 <label>Sobiv aeg kontakteerumiseks</label>
-                                <input ng-model="application.contact_time" type="text">
+                                <input ng-model="contact_time" type="text">
                             </md-input-container>
 
                         </div>
@@ -133,12 +133,12 @@
                         <div>
                             <md-input-container>
                                 <label>E-post</label>
-                                <input ng-model="application.email" type="text">
+                                <input ng-model="email" type="text">
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Telefon:</label>
-                                <input ng-model="application.phone" type="text">
+                                <input ng-model="phone" type="text">
                             </md-input-container>
                         </div>
                     </md-content>
@@ -146,7 +146,7 @@
                     <md-content layout-gt-sm="row" layout-padding>
                         <div>
                             <md-input-container>
-                                <md-checkbox ng-model="application.person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
+                                <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
                             </md-input-container>
                         </div>
                     </md-content>
@@ -160,12 +160,12 @@
                         <div>
                             <md-input-container>
                                 <label>Kuupäev</label>
-                                <md-datepicker ng-model="application.dateOfIncident"></md-datepicker>
+                                <md-datepicker ng-model="dateOfIncident"></md-datepicker>
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Kellaaeg</label>
-                                <input ng-model="application.timeOfIncident" type="time">
+                                <input ng-model="timeOfIncident" type="time">
                             </md-input-container>
                         </div>
                     </md-content>
@@ -174,7 +174,7 @@
                         <div>
                             <md-input-container>
                                 <label>Prefektuur</label>
-                                <md-select ng-model="application.police_areap">
+                                <md-select ng-model="police_area">
                                     <md-option ng-repeat="area in police_areas" value="{{area.id}}">
                                         {{area.name}}
                                     </md-option>
@@ -187,7 +187,7 @@
                         <div>
                             <md-input-container>
                                 <label>Riik</label>
-                                <md-select ng-model="application.country">
+                                <md-select ng-model="country">
                                     <md-option ng-repeat="country in citizenships" value="{{country.id}}">
                                         {{country.name}}
                                     </md-option>
@@ -200,12 +200,12 @@
                         <div>
                             <md-input-container>
                                 <label>Aadress</label>
-                                <input ng-model="application.incidentAddress" type="text">
+                                <input ng-model="incidentAddress" type="text">
                             </md-input-container>
 
                             <md-input-container>
                                 <label>Toimumise koht</label>
-                                <input ng-model="application.place" type="text">
+                                <input ng-model="place" type="text">
                             </md-input-container>
                         </div>
                     </md-content>
@@ -214,22 +214,20 @@
                         <div>
                             <md-input-container>
                                 <label>Toimunu kirjeldus</label>
-                                <textarea ng-model="application.description"></textarea>
+                                <textarea ng-model="desc"></textarea>
                             </md-input-container>
                         </div>
                         <div>
                             <md-input-container>
                                 <label>Tekitatud varaline kahju €</label>
-                                <input ng-model="application.damage" type="number">
+                                <input ng-model="damage" type="number">
                             </md-input-container>
                         </div>
                     </md-content>
                 </div>
             </div>
         </form>
-
     </div>
-
     <!--script>
         $(document).ready(function () {
             $('#mainForm').showProgress({
