@@ -1,4 +1,4 @@
-var policeApp = angular.module('policeApp', ['ngMaterial', 'ui.bootstrap']);
+var policeApp = angular.module('policeApp', ['ngMaterial', 'ngMessages','ui.bootstrap']);
 
 policeApp.controller('formController', function ($scope, $http) {
 
