@@ -35,11 +35,11 @@
                     <div flex="33" flex-xs="100" layout-xs="column">
                         <md-input-container>
                             <label>Eesnimi</label>
-                            <input ng-model="firstName" type="text" required md-asterisk pattern="[a-zA-Z]+" ng-pattern-restrict ng-minlength="2">
-			           </md-input-container>
+                            <input ng-model="firstName" type="text" required md-asterisk>
+                        </md-input-container>
                         <md-input-container>
                             <label>Perekonnanimi</label>
-                            <input ng-model="lastName" type="text" required md-asterisk pattern="[a-zA-Z]+" ng-pattern-restrict ng-minlength="2">
+                            <input ng-model="lastName" type="text" required md-asterisk>
                         </md-input-container>
                     </div>
 
@@ -52,26 +52,23 @@
                         </md-select>
                     </md-input-container>
 
-                    <md-radio-group layout="row" layout-xs="column" ng-model="radioCurrent" flex="50" flex-xs="100">
+                    <md-radio-group ng-model="radioCurrent" layout="row" flex="100" layout-xs="column" flex-xs="100">
                         <div layout="column" flex="20" flex-xs="100">
                             <md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
                             <md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
                         </div>
-                        <div flex="40">
-                            <div>
-                                <md-input-container ng-show="isSelected(0)" flex-xs="100">
-                                    <label>Isikukood</label>
-                                    <input ng-model="idCode" type="text" required md-asterisk ng-pattern="/^\d+$/" ng-minlength="11" ng-maxlength="11">
-                                </md-input-container>
-                            </div>
-                            <div>
-                                <md-input-container ng-show="isSelected(1)" flex-xs="100">
-                                    <label>Sünniaeg</label>
-                                    <md-datepicker ng-model="dateOfBirth" required md-asterisk></md-datepicker>
-                                </md-input-container>
-                            </div>
-                        </div>
                     </md-radio-group>
+
+
+                    <md-input-container ng-show="isSelected(0)" flex="100">
+                        <label>Isikukood</label>
+                        <input ng-model="idCode" type="text" required md-asterisk ng-pattern="/^\d+$/" ng-minlength="11" ng-maxlength="11">
+                    </md-input-container>
+
+                    <md-input-container ng-show="isSelected(1)" flex="100">
+                        <label>Sünniaeg</label>
+                        <md-datepicker ng-model="dateOfBirth" required md-asterisk></md-datepicker>
+                    </md-input-container>
 
                     <div layout="row" layout-xs="column" flex="100">
                         <md-input-container flex="45" flex-xs="100">
@@ -134,14 +131,14 @@
                         <h3>Sündmuse toimumise aeg</h3>
                     </div>
 
-                    <div layout-xs="column">
-                        <md-input-container>
-                            <label>Kuupäev</label>
-                            <md-datepicker ng-model="dateOfIncident"></md-datepicker>
-                        </md-input-container>
-                        <md-input-container>
+                    <div layout="row" flex="100">
+                        <md-input-container flex="30" flex-xs="30">
                             <label>Kellaaeg</label>
                             <input ng-model="timeOfIncident" type="time">
+                        </md-input-container>
+                        <md-input-container flex="70" flex-xs="70">
+                            <label>Kuupäev</label>
+                            <md-datepicker ng-model="dateOfIncident"></md-datepicker>
                         </md-input-container>
                     </div>
 
@@ -149,7 +146,7 @@
                         <h3>Sündmuse toimumise koht</h3>
                     </div>
 
-                    <md-input-container flex="100" flex-xs="100">
+                    <md-input-container class="md-block" flex-gt-xs="100" flex-xs="100">
                         <label>Prefektuur</label>
                         <md-select ng-model="police_area">
                             <md-option ng-repeat="area in police_areas" value="{{area.id}}">
@@ -167,16 +164,16 @@
                         </md-select>
                     </md-input-container>
 
-                    <div flex-xs="100">
-                        <md-input-container flex-xs="100">
-                            <label>Toimumise koht</label>
-                            <input ng-model="place" type="text">
-                        </md-input-container>
-                        <md-input-container flex-xs="100">
-                            <label>Aadress</label>
-                            <input ng-model="incidentAddress" type="text">
-                        </md-input-container>
-                    </div>
+                    <md-input-container flex="33" flex-xs="100">
+                        <label>Toimumise koht</label>
+                        <input ng-model="place" type="text">
+                    </md-input-container>
+
+                    <md-input-container flex="33" flex-xs="100">
+                        <label>Aadress</label>
+                        <input ng-model="incidentAddress" type="text">
+                    </md-input-container>
+
 
                     <md-input-container flex="100">
                         <label>Toimunu kirjeldus</label>
