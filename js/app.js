@@ -324,7 +324,7 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.person_is_jur = true;
     $scope.dateOfIncident = new Date('2017-01-08T23:00:00.000Z');
     $scope.timeOfIncident = new Date('2017-01-08T23:00:00.000Z');
-    $scope.police_area = 1;
+    $scope.police_area = 0;
     $scope.country = 1;
     $scope.incidentAddress = 'Vabaduse pst 123';
     $scope.place = 'kortermaja';
