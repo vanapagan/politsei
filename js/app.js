@@ -312,7 +312,7 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.lastName = 'Palo';
     $scope.idCode = '39312245336';
     $scope.dateOfBirth = new Date('1993-12-23T22:00:00.000Z');
-    $scope.occupation = 'Õpilane';
+    $scope.occupation = 'Ehitaja';
     $scope.citizenship = 1;
     $scope.address = 'Tallinn';
     $scope.postcode = '123456';
