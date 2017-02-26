@@ -319,7 +319,7 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.county = 1;
     $scope.contact_manner = 1;
     $scope.contact_time = 'Igal ajal';
-    $scope.email = 'kristpalo@hotmail.com';
+    $scope.email = 'kristopalo@hotmail.com';
     $scope.phone = '5519567';
     $scope.person_is_jur = true;
     $scope.dateOfIncident = new Date('2017-01-08T23:00:00.000Z');
