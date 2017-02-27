@@ -90,9 +90,14 @@
                             <input ng-model="address" type="text">
                         </md-input-container>
                         <div layout-xs="column" flex="25" flex-xs="100">
-                            <md-input-container>
+                            <md-input-container >
                                 <label>Sihtnumber</label>
-                                <input ng-model="postcode" type="text" ng-pattern="/^\d+$/">
+                                <input ng-model="postcode" name="postcode" type="text" ng-pattern="/^\d+$/">
+								<div ng-messages="policeForm.postcode.$error" role="alert">
+									<div ng-message-exp="['pattern']">
+										Sihtnumber peab sisaldama ainult numberid.
+									</div>
+								</div>
                             </md-input-container>
                             <md-input-container class="fix">
                                 <label>Maakond</label>
@@ -108,11 +113,19 @@
                     <div layout-xs="column" flex="30" flex-xs="100">
                         <md-input-container flex="50" flex-xs="100">
                             <label>E-post</label>
-                            <input ng-model="email" type="text" required md-asterisk>
+                            <input ng-model="email" name="epost" type="email" required md-asterisk >
+							<div ng-messages="policeForm.epost.$error" role="alert">
+									<div ng-message="required">See väli on kohustuslik.</div>
+									<div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
+							</div>
                         </md-input-container>
                         <md-input-container flex="50" flex-xs="100">
                             <label>Telefon:</label>
-                            <input ng-model="phone" type="text" required md-asterisk>
+                            <input ng-model="phone" name="phone" type="text" required md-asterisk ng-pattern="/^\d+$/">
+							<div ng-messages="policeForm.phone.$error" role="alert">
+								<div ng-message="required">See väli on kohustuslik.</div>
+								<div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
+							</div>
                         </md-input-container>
                     </div>
 
@@ -194,12 +207,19 @@
 
                     <md-input-container flex="100">
                         <label>Kirjeldus</label>
-                        <textarea ng-model="desc" required md-asterisk></textarea>
+                        <textarea ng-model="desc"  name="desc" required md-asterisk ng-minlength="15" ></textarea>
+						<div ng-messages="policeForm.desc.$error" role="alert">
+							
+                                <div ng-message="required">See väli on kohustuslik.</div>
+                                <div ng-message="minlength">Vähemalt 15 tähemärki.</div>
+                           
+						 </div>
                     </md-input-container>
 
                     <md-input-container flex="20" flex-xs="100">
                         <label>Tekitatud varaline kahju €</label>
                         <input ng-model="damage" type="number" ng-pattern="/^\d+$/">
+						
                     </md-input-container>
 
                     <div class="md-block" flex="100">
