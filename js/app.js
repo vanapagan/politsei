@@ -1,4 +1,4 @@
-var policeApp = angular.module('policeApp', ['ngMaterial', 'ngMessages','ui.bootstrap']);
+var policeApp = angular.module('policeApp', ['ngMaterial', 'ngMessages', 'ui.bootstrap']);
 
 policeApp.controller('formController', function ($scope, $http) {
 
@@ -300,13 +300,16 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.radioCurrent = 0;
 
-    $scope.selectRadio = function(value) {
+    $scope.selectRadio = function (value) {
         $scope.radioCurrent = value;
     };
 
-    $scope.isSelected = function(value) {
-        return $scope.radioCurrent==value;
+    $scope.isSelected = function (value) {
+        return $scope.radioCurrent == value;
     }
+
+    $scope.items = [];
+    $scope.perpetrators = [];
 
     $scope.firstName = 'Kristo';
     $scope.lastName = 'Palo';
@@ -330,9 +333,36 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.place = 'kortermaja';
     $scope.desc = 'Minu rahakott varastati ära';
     $scope.damage = 35;
+    $scope.items.push({ 
+    'id': 'item1', 
+    'output_id': 1, 
+    'name': 'Sülearvuti ASUS', 
+    'year': 2011,
+    'value': 350,
+    'timeLastThere':  new Date('2017-01-06T23:00:00.000Z'),
+    'dateLastThere': new Date('2017-01-06T23:00:00.000Z'),
+    'timeWentMissing': new Date('2017-01-09T23:00:00.000Z'),
+    'dateWentMissing': new Date('2017-01-09T23:00:00.000Z'),
+    'wasInALockedRoom': true,
+    'identification': 'Musta värvi. Seeria number: XX-455-34342-K56C'
+});
 
-    $scope.submit = function() {
+    $scope.submit = function () {
         console.log('submit form');
+    }
+
+
+
+    $scope.addNewItem = function () {
+        var newItemNo = $scope.items.length + 1;
+        $scope.items.push({ 'id': 'item' + newItemNo, 'output_id': newItemNo });
+    }
+
+
+
+    $scope.addNewPerp = function () {
+        var newPerpNo = $scope.perpetrators.length + 1;
+        $scope.perpetrators.push({ 'id': 'item' + newPerpNo, 'output_id': newPerpNo });
     }
 
 });
