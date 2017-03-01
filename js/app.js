@@ -310,6 +310,7 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.items = [];
     $scope.perpetrators = [];
+    $scope.witnesses = [];
 
     $scope.firstName = 'Kristo';
     $scope.lastName = 'Palo';
@@ -349,14 +350,12 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.submit = function () {
         console.log('submit form');
-    }
-
-
+    };
 
     $scope.addNewItem = function () {
         var newItemNo = $scope.items.length + 1;
         $scope.items.push({ 'id': 'item' + newItemNo, 'output_id': newItemNo });
-    }
+    };
 
     $scope.removeItem = function (item) {
         var index = $scope.items.indexOf(item);
@@ -365,8 +364,23 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.addNewPerp = function () {
         var newPerpNo = $scope.perpetrators.length + 1;
-        $scope.perpetrators.push({ 'id': 'item' + newPerpNo, 'output_id': newPerpNo });
-    }
+        $scope.perpetrators.push({ 'id': 'perp' + newPerpNo, 'output_id': newPerpNo });
+    };
+
+    $scope.removePerp = function (perp) {
+        var index = $scope.perpetrators.indexOf(perp);
+        $scope.perpetrators.splice(index, 1);  
+    };
+
+    $scope.addNewWitness = function () {
+        var newWitnessNo = $scope.witnesses.length + 1;
+        $scope.perpetrators.push({ 'id': 'witness' + newPerpNo, 'output_id': newPerpNo });
+    };
+
+    $scope.removeWitness = function (witness) {
+        var index = $scope.witnesses.indexOf(witness);
+        $scope.witnesses.splice(index, 1);  
+    };
 
 });
 

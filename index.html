@@ -264,11 +264,11 @@
                                 <p>Vara valdusest väljaminek on tuvastatud (polnud enam eset/asja teatajal/kannatanul olemas)</p>
                             </div>
                             <div layout="row" layout-xs="column">
-                                <md-input-container flex="33" flex-xs="100">
+                                <md-input-container flex="15" flex-xs="100">
                                     <label>Kellaaeg</label>
                                     <input ng-model="item.timeWentMissing" type="time">
                                 </md-input-container>
-                                <md-input-container flex="33" flex-xs="100">
+                                <md-input-container flex="85" flex-xs="100">
                                     <label>Kuupäev</label>
                                     <md-datepicker ng-model="item.dateWentMissing"></md-datepicker>
                                 </md-input-container>
@@ -294,6 +294,157 @@
                     <div class="md-block" flex="100">
                         <h3>Süüteo toime pannud isiku(te) andmed</h3>
                     </div>
+
+                    <div data-ng-repeat="perp in perpetrators" flex="100">
+
+                        <div layout="row" flex="100">
+                            <h4>SÜÜTEO TOIME PANNUD ISIK #{{perp.output_id}}</h4>
+                            <md-button ng-click="removePerp(perp)">Eemalda</md-button>
+                        </div>
+
+                        <div layout-xs="column">
+                            <md-input-container>
+                                <label>Eesnimi</label>
+                                <input ng-model="perp.firstName" type="text">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Perekonnanimi</label>
+                                <input ng-model="perp.lastName" type="text">
+                            </md-input-container>
+                        </div>
+
+                        <div layout-xs="column">
+                            <md-input-container flex="33" flex-xs="100">
+                                <label>Isikukood</label>
+                                <input ng-model="perp.idCode" type="text">
+                            </md-input-container>
+                            <md-input-container flex="33" flex-xs="100">
+                                <label>Sünniaeg</label>
+                                <md-datepicker ng-model="perp.dateOfBirth"></md-datepicker>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container flex="33" flex-xs="100">
+                            <label>Kodakondsus</label>
+                            <md-select ng-model="perp.citizenship">
+                                <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
+                                    {{citizenship.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <div>
+                            <md-input-container flex="33" flex-xs="100">
+                                <label>Amet</label>
+                                <input ng-model="perp.occupation" type="text">
+                            </md-input-container>
+                        </div>
+
+                        <div>
+                            <md-input-container flex="45" flex-xs="100">
+                                <label>Aadress</label>
+                                <input ng-model="perp.address" type="text">
+                            </md-input-container>
+                        </div>
+
+
+                        <div layout-xs="column">
+                            <md-input-container>
+                                <label>E-post</label>
+                                <input ng-model="perp.email" type="email">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Telefon</label>
+                                <input ng-model="perp.phone" type="number">
+                            </md-input-container>
+                        </div>
+
+                        <div>
+                            <md-input-container>
+                                <label>Tundemärgid</label>
+                                <input ng-model="perp.identification" type="text">
+                            </md-input-container>
+                        </div>
+
+                    </div>
+
+                    <md-input-container flex="100">
+                        <md-button ng-click="addNewPerp()">Lisa isik</md-button>
+                    </md-input-container>
+
+                    <div class="md-block" flex="100">
+                        <h3>Tunnistaja(te) andmed</h3>
+                    </div>
+
+                    <div data-ng-repeat="witness in witnesses" flex="100">
+
+                        <div layout="row" flex="100">
+                            <h4>SÜÜTEO TOIME PANNUD ISIK #{{witness.output_id}}</h4>
+                            <md-button ng-click="removeWitness(witness)">Eemalda</md-button>
+                        </div>
+
+                        <div layout-xs="column">
+                            <md-input-container>
+                                <label>Eesnimi</label>
+                                <input ng-model="witness.firstName" type="text">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Perekonnanimi</label>
+                                <input ng-model="witness.lastName" type="text">
+                            </md-input-container>
+                        </div>
+
+                        <div layout-xs="column">
+                            <md-input-container flex="33" flex-xs="100">
+                                <label>Isikukood</label>
+                                <input ng-model="witness.idCode" type="text">
+                            </md-input-container>
+                            <md-input-container flex="33" flex-xs="100">
+                                <label>Sünniaeg</label>
+                                <md-datepicker ng-model="witness.dateOfBirth"></md-datepicker>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container flex="33" flex-xs="100">
+                            <label>Kodakondsus</label>
+                            <md-select ng-model="witness.citizenship">
+                                <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
+                                    {{citizenship.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <div>
+                            <md-input-container flex="33" flex-xs="100">
+                                <label>Amet</label>
+                                <input ng-model="witness.occupation" type="text">
+                            </md-input-container>
+                        </div>
+
+                        <div>
+                            <md-input-container flex="45" flex-xs="100">
+                                <label>Aadress</label>
+                                <input ng-model="witness.address" type="text">
+                            </md-input-container>
+                        </div>
+
+
+                        <div layout-xs="column">
+                            <md-input-container>
+                                <label>E-post</label>
+                                <input ng-model="witness.email" type="email">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Telefon</label>
+                                <input ng-model="witness.phone" type="number">
+                            </md-input-container>
+                        </div>
+
+                    </div>
+
+                    <md-input-container flex="100">
+                        <md-button ng-click="addNewPerp()">Lisa tunnistaja</md-button>
+                    </md-input-container>
 
 
                     <div class="md-block" flex="100">
