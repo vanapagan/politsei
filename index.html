@@ -224,10 +224,12 @@
                     </div>
 
                     <div data-ng-repeat="item in items" flex="100">
+
                         <div layout="row" flex="100">
                             <h4>VARA #{{item.output_id}}</h4>
                             <md-button ng-click="removeItem(item)">Eemalda</md-button>
                         </div>
+
                         <div layout="row" layout-xs="column">
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Eseme nimetus</label>
@@ -379,7 +381,7 @@
                     <div data-ng-repeat="witness in witnesses" flex="100">
 
                         <div layout="row" flex="100">
-                            <h4>SÜÜTEO TOIME PANNUD ISIK #{{witness.output_id}}</h4>
+                            <h4>TUNNISTAJA #{{witness.output_id}}</h4>
                             <md-button ng-click="removeWitness(witness)">Eemalda</md-button>
                         </div>
 
@@ -443,7 +445,7 @@
                     </div>
 
                     <md-input-container flex="100">
-                        <md-button ng-click="addNewPerp()">Lisa tunnistaja</md-button>
+                        <md-button ng-click="addNewWitness()">Lisa tunnistaja</md-button>
                     </md-input-container>
 
 
@@ -460,6 +462,7 @@
                     <div>
                         <md-button type="submit">Kinnita allkirjastamata</md-button>
                     </div>
+
                 </div>
             </form>
         </md-content>

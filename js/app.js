@@ -312,19 +312,19 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.perpetrators = [];
     $scope.witnesses = [];
 
-    $scope.firstName = 'Kristo';
-    $scope.lastName = 'Palo';
+    $scope.firstName = 'Aadu';
+    $scope.lastName = 'Must';
     $scope.idCode = '39312245336';
     $scope.dateOfBirth = new Date('1993-12-23T22:00:00.000Z');
     $scope.occupation = 'Ehitaja';
     $scope.citizenship = 1;
-    $scope.address = 'Tallinn';
+    $scope.address = 'E. Vilde tee 36-42, Tallinn';
     $scope.postcode = '123456';
     $scope.county = 1;
     $scope.contact_manner = 1;
     $scope.contact_time = 'Igal ajal';
-    $scope.email = 'kristopalo@hotmail.com';
-    $scope.phone = '5519567';
+    $scope.email = 'aadumust@hotmail.com';
+    $scope.phone = '5518432';
     $scope.person_is_jur = true;
     $scope.dateOfIncident = new Date('2017-01-08T23:00:00.000Z');
     $scope.timeOfIncident = new Date('2017-01-08T23:00:00.000Z');
@@ -347,6 +347,33 @@ policeApp.controller('formController', function ($scope, $http) {
         'wasInALockedRoom': true,
         'identification': 'Musta värvi. Seeria number: XX-455-34342-K56C'
     });
+    $scope.perpetrators.push({
+        'id': 'perp1',
+        'output_id': 1,
+        'firstName': 'Eldur',
+        'lastName': 'Pildur',
+        'idCode': 39312245336,
+        'dateOfBirth': new Date('1993-12-23T22:00:00.000Z'),
+        'occupation': 'Ehitaja',
+        'citizenship': 1,
+        'address': 'Tallinn',
+        'email': 'eldurpildur@hotmail.com',
+        'phone': 5519567,
+        'identification': 'Pikka kasvu, tumedate juustega'
+    });
+    $scope.witnesses.push({
+        'id': 'witness1',
+        'output_id': 1,
+        'firstName': 'Valdur',
+        'lastName': 'Põld',
+        'idCode': 39312245336,
+        'dateOfBirth': new Date('1993-12-23T22:00:00.000Z'),
+        'occupation': 'Töömees',
+        'citizenship': 1,
+        'address': 'Tallinn',
+        'email': 'eldurpildur@hotmail.com',
+        'phone': 5519567
+    });
 
     $scope.submit = function () {
         console.log('submit form');
@@ -359,7 +386,7 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.removeItem = function (item) {
         var index = $scope.items.indexOf(item);
-        $scope.items.splice(index, 1);  
+        $scope.items.splice(index, 1);
     };
 
     $scope.addNewPerp = function () {
@@ -369,17 +396,17 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.removePerp = function (perp) {
         var index = $scope.perpetrators.indexOf(perp);
-        $scope.perpetrators.splice(index, 1);  
+        $scope.perpetrators.splice(index, 1);
     };
 
     $scope.addNewWitness = function () {
         var newWitnessNo = $scope.witnesses.length + 1;
-        $scope.perpetrators.push({ 'id': 'witness' + newPerpNo, 'output_id': newPerpNo });
+        $scope.witnesses.push({ 'id': 'witness' + newWitnessNo, 'output_id': newWitnessNo });
     };
 
     $scope.removeWitness = function (witness) {
         var index = $scope.witnesses.indexOf(witness);
-        $scope.witnesses.splice(index, 1);  
+        $scope.witnesses.splice(index, 1);
     };
 
 });
