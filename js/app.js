@@ -333,19 +333,19 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.place = 'kortermaja';
     $scope.desc = 'Minu rahakott varastati ära';
     $scope.damage = 35;
-    $scope.items.push({ 
-    'id': 'item1', 
-    'output_id': 1, 
-    'name': 'Sülearvuti ASUS', 
-    'year': 2011,
-    'value': 350,
-    'timeLastThere':  new Date('2017-01-06T23:00:00.000Z'),
-    'dateLastThere': new Date('2017-01-06T23:00:00.000Z'),
-    'timeWentMissing': new Date('2017-01-09T23:00:00.000Z'),
-    'dateWentMissing': new Date('2017-01-09T23:00:00.000Z'),
-    'wasInALockedRoom': true,
-    'identification': 'Musta värvi. Seeria number: XX-455-34342-K56C'
-});
+    $scope.items.push({
+        'id': 'item1',
+        'output_id': 1,
+        'name': 'Sülearvuti ASUS',
+        'year': 2011,
+        'value': 350,
+        'timeLastThere': new Date('2017-01-06T23:00:00.000Z'),
+        'dateLastThere': new Date('2017-01-06T23:00:00.000Z'),
+        'timeWentMissing': new Date('2017-01-09T23:00:00.000Z'),
+        'dateWentMissing': new Date('2017-01-09T23:00:00.000Z'),
+        'wasInALockedRoom': true,
+        'identification': 'Musta värvi. Seeria number: XX-455-34342-K56C'
+    });
 
     $scope.submit = function () {
         console.log('submit form');
@@ -358,7 +358,10 @@ policeApp.controller('formController', function ($scope, $http) {
         $scope.items.push({ 'id': 'item' + newItemNo, 'output_id': newItemNo });
     }
 
-
+    $scope.removeItem = function (item) {
+        var index = $scope.items.indexOf(item);
+        $scope.items.splice(index, 1);  
+    };
 
     $scope.addNewPerp = function () {
         var newPerpNo = $scope.perpetrators.length + 1;

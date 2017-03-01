@@ -224,8 +224,9 @@
                     </div>
 
                     <div data-ng-repeat="item in items" flex="100">
-                        <div class="md-block" flex="100">
+                        <div layout="row" flex="100">
                             <h4>VARA #{{item.output_id}}</h4>
+                            <md-button ng-click="removeItem(item)">Eemalda</md-button>
                         </div>
                         <div layout="row" layout-xs="column">
                             <md-input-container flex="33" flex-xs="100">
