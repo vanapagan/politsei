@@ -26,8 +26,12 @@
 <body>
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <md-content layout-padding>
-            <form role="form" name="policeForm" ng-submit="submit(policeForm.$valid)" novalidate>
+            <form role="form" name="policeForm" ng-submit="submit(policeForm.$valid)" ng-show="showForm" novalidate>
                 <div layout="row" layout-xs="column" layout-wrap>
+
+                    <div flex="100">
+                        <h1>Politseile avalduse esitamine</h1>
+                    </div>
 
                     <md-input-container flex="100">
                         <md-button ng-click="populateWithTestData()">Täida vorm testandmetega</md-button>
@@ -473,6 +477,41 @@
 
                 </div>
             </form>
+            <div layout="column" ng-show="showResult" layout-wrap>
+                <h3>Vorm edukalt saadetud!</h3>
+                <p>
+                    <b>Eesnimi: </b>{{firstName}}<br />
+                    <b>Perekonnanimi: </b>{{lastName}}<br />
+                    <b>Isikukood: </b>{{idCode}}<br />
+                    <b>Sünniaeg: </b>{{dateOfBirth}}<br />
+                    <b>Amet: </b>{{occupation}}<br />
+                    <b>Kodakondsus: </b>{{citizenship}}<br />
+                    <b>Elukoha aadress: </b>{{address}}<br />
+                    <b>Sihtnumber: </b>{{postcode}}<br />
+                    <b>Maakond: </b>{{county}}<br />
+                    <b>Sobiv viis kontakteerumiseks: </b>{{contact_manner}}<br />
+                    <b>Sobiv aeg kontakteerumiseks: </b>{{contact_time}}<br />
+                    <b>E-post: </b>{{email}}<br />
+                    <b>Telefon: </b>{{phone}}<br />
+                    <b>Kannatanu on juriidiline isik: </b>{{person_is_jur}}<br />
+                    <b>Registrikood: </b>{{registryCode}}<br />
+                    <b>Sündmuse toimumise kuupäev: </b>{{dateOfIncident}}<br />
+                    <b>Sündmuse toimumise aeg: </b>{{timeOfIncident}}<br />
+                    <b>Prefektuur: </b>{{police_area}}<br />
+                    <b>Riik: </b>{{country}}<br />
+                    <b>Aadress: </b>{{incidentAddress}}<br />
+                    <b>Toimumise koht: </b>{{place}}<br />
+                    <b>Toimunu kirjeldus: </b>{{desc}}<br />
+                    <b>Tekitatud varaline kahju: </b>{{damage}}<br />
+                    <b>Ära võetud/viidud/saamata jäänud vara: </b>{{items}}<br />
+                    <b>Süüteo toime pannud isiku(te) andmed: </b>{{perpetrators}}<br />
+                    <b>Tunnisatajate andmed: </b>{{witnesses}}<br />
+                    <b>Olen nõus kokkuleppemenetlusega: </b>{{kokkuleppemenetlus}}<br />
+                    <b>Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile: </b>{{docs_to_email}}<br
+                    />
+                    <b>Soovin teavet E-Toimiku kaudu: </b>{{e_toimik}}
+                </p>
+            </div>
         </md-content>
     </div>
 </body>

@@ -2,6 +2,9 @@ var policeApp = angular.module('policeApp', ['ngMaterial', 'ngMessages', 'ui.boo
 
 policeApp.controller('formController', function ($scope, $http) {
 
+    $scope.showForm = true;
+    $scope.showResult = false;
+
     $scope.citizenships = [
         { id: 0, name: "-" },
         { id: 1, name: "Eesti Vabariik" },
@@ -381,11 +384,16 @@ policeApp.controller('formController', function ($scope, $http) {
             'email': 'eldurpildur@hotmail.com',
             'phone': 5519567
         });
+        $scope.kokkuleppemenetlus = true;
+        $scope.docs_to_email = false;
+        $scope.e_toimik = true;
     };
 
     $scope.submit = function (isValid) {
         if (isValid) {
             console.log("Form submitted");
+            $scope.showForm = false;
+            $scope.showResult = true;
         } else {
             angular.element("[name='policeForm']").find('.ng-invalid:visible:first').focus();
         }
