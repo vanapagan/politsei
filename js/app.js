@@ -306,7 +306,11 @@ policeApp.controller('formController', function ($scope, $http) {
 
     $scope.isSelected = function (value) {
         return $scope.radioCurrent == value;
-    }
+    };
+
+    $scope.isACompany = function () {
+        return $scope.person_is_jur;
+    };
 
     $scope.items = [];
     $scope.perpetrators = [];
@@ -328,6 +332,7 @@ policeApp.controller('formController', function ($scope, $http) {
         $scope.email = 'aadumust@hotmail.com';
         $scope.phone = '5518432';
         $scope.person_is_jur = true;
+        $scope.registryCode = 1234567;
         $scope.dateOfIncident = new Date('2017-01-08T23:00:00.000Z');
         $scope.timeOfIncident = new Date('2017-01-08T23:00:00.000Z');
         $scope.police_area = 0;
