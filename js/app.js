@@ -312,68 +312,71 @@ policeApp.controller('formController', function ($scope, $http) {
     $scope.perpetrators = [];
     $scope.witnesses = [];
 
-    $scope.firstName = 'Aadu';
-    $scope.lastName = 'Must';
-    $scope.idCode = '39312245336';
-    $scope.dateOfBirth = new Date('1993-12-23T22:00:00.000Z');
-    $scope.occupation = 'Ehitaja';
-    $scope.citizenship = 1;
-    $scope.address = 'E. Vilde tee 36-42, Tallinn';
-    $scope.postcode = '123456';
-    $scope.county = 1;
-    $scope.contact_manner = 1;
-    $scope.contact_time = 'Igal ajal';
-    $scope.email = 'aadumust@hotmail.com';
-    $scope.phone = '5518432';
-    $scope.person_is_jur = true;
-    $scope.dateOfIncident = new Date('2017-01-08T23:00:00.000Z');
-    $scope.timeOfIncident = new Date('2017-01-08T23:00:00.000Z');
-    $scope.police_area = 0;
-    $scope.country = 1;
-    $scope.incidentAddress = 'Vabaduse pst 123';
-    $scope.place = 'kortermaja';
-    $scope.desc = 'Minu rahakott varastati ära';
-    $scope.damage = 35;
-    $scope.items.push({
-        'id': 'item1',
-        'output_id': 1,
-        'name': 'Sülearvuti ASUS',
-        'year': 2011,
-        'value': 350,
-        'timeLastThere': new Date('2017-01-06T23:00:00.000Z'),
-        'dateLastThere': new Date('2017-01-06T23:00:00.000Z'),
-        'timeWentMissing': new Date('2017-01-09T23:00:00.000Z'),
-        'dateWentMissing': new Date('2017-01-09T23:00:00.000Z'),
-        'wasInALockedRoom': true,
-        'identification': 'Musta värvi. Seeria number: XX-455-34342-K56C'
-    });
-    $scope.perpetrators.push({
-        'id': 'perp1',
-        'output_id': 1,
-        'firstName': 'Eldur',
-        'lastName': 'Pildur',
-        'idCode': 39312245336,
-        'dateOfBirth': new Date('1993-12-23T22:00:00.000Z'),
-        'occupation': 'Ehitaja',
-        'citizenship': 1,
-        'address': 'Tallinn',
-        'email': 'eldurpildur@hotmail.com',
-        'phone': 5519567,
-        'identification': 'Pikka kasvu, tumedate juustega'
-    });
-    $scope.witnesses.push({
-        'id': 'witness1',
-        'output_id': 1,
-        'firstName': 'Valdur',
-        'lastName': 'Põld',
-        'idCode': 39312245336,
-        'dateOfBirth': new Date('1993-12-23T22:00:00.000Z'),
-        'occupation': 'Töömees',
-        'citizenship': 1,
-        'address': 'Tallinn',
-        'email': 'eldurpildur@hotmail.com',
-        'phone': 5519567
-    });
+
+    $scope.populateWithTestData = function () {
+        $scope.firstName = 'Aadu';
+        $scope.lastName = 'Must';
+        $scope.idCode = '39312245336';
+        $scope.dateOfBirth = new Date('1993-12-23T22:00:00.000Z');
+        $scope.occupation = 'Ehitaja';
+        $scope.citizenship = 1;
+        $scope.address = 'E. Vilde tee 36-42, Tallinn';
+        $scope.postcode = '123456';
+        $scope.county = 1;
+        $scope.contact_manner = 1;
+        $scope.contact_time = 'Igal ajal';
+        $scope.email = 'aadumust@hotmail.com';
+        $scope.phone = '5518432';
+        $scope.person_is_jur = true;
+        $scope.dateOfIncident = new Date('2017-01-08T23:00:00.000Z');
+        $scope.timeOfIncident = new Date('2017-01-08T23:00:00.000Z');
+        $scope.police_area = 0;
+        $scope.country = 1;
+        $scope.incidentAddress = 'Vabaduse pst 123';
+        $scope.place = 'kortermaja';
+        $scope.desc = 'Minu rahakott varastati ära';
+        $scope.damage = 35;
+        $scope.items.push({
+            'id': 'item1',
+            'output_id': 1,
+            'name': 'Sülearvuti ASUS',
+            'year': 2011,
+            'value': 350,
+            'timeLastThere': new Date('2017-01-06T23:00:00.000Z'),
+            'dateLastThere': new Date('2017-01-06T23:00:00.000Z'),
+            'timeWentMissing': new Date('2017-01-09T23:00:00.000Z'),
+            'dateWentMissing': new Date('2017-01-09T23:00:00.000Z'),
+            'wasInALockedRoom': true,
+            'identification': 'Musta värvi. Seeria number: XX-455-34342-K56C'
+        });
+        $scope.perpetrators.push({
+            'id': 'perp1',
+            'output_id': 1,
+            'firstName': 'Eldur',
+            'lastName': 'Pildur',
+            'idCode': 39312245336,
+            'dateOfBirth': new Date('1993-12-23T22:00:00.000Z'),
+            'occupation': 'Ehitaja',
+            'citizenship': 1,
+            'address': 'Tallinn',
+            'email': 'eldurpildur@hotmail.com',
+            'phone': 5519567,
+            'identification': 'Pikka kasvu, tumedate juustega'
+        });
+        $scope.witnesses.push({
+            'id': 'witness1',
+            'output_id': 1,
+            'firstName': 'Valdur',
+            'lastName': 'Põld',
+            'idCode': 39312245336,
+            'dateOfBirth': new Date('1993-12-23T22:00:00.000Z'),
+            'occupation': 'Töömees',
+            'citizenship': 1,
+            'address': 'Tallinn',
+            'email': 'eldurpildur@hotmail.com',
+            'phone': 5519567
+        });
+    };
 
     $scope.submit = function () {
         console.log('submit form');

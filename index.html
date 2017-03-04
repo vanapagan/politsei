@@ -28,6 +28,10 @@
         <md-content layout-padding>
             <form role="form" ng-submit="submit()" name="policeForm">
                 <div layout="row" layout-xs="column" layout-wrap>
+                    
+                    <md-input-container flex="100">
+                        <md-button ng-click="populateWithTestData()">Täida vorm testandmetega</md-button>
+                    </md-input-container>
 
                     <div flex="100">
                         <h3>Teataja</h3>
@@ -467,19 +471,6 @@
             </form>
         </md-content>
     </div>
-    <!--script>
-        $(document).ready(function () {
-            $('#mainForm').showProgress({
-                message: {
-                    '25': 'Veerand on valmis!',
-                    '50': 'Oled poolel teel!',
-                    '75': 'Kõigest natuke veel!',
-                    '100': 'Ja ongi valmis!'
-                },
-                position: 'bottom'
-            });
-        });
-    </script-->
 </body>
 
 </html>
