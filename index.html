@@ -94,32 +94,30 @@
                     </md-input-container>
 
                     <div layout="row" layout-xs="column" flex="100">
-                        <md-input-container flex="45" flex-xs="100">
+                        <md-input-container flex="50" flex-xs="100">
                             <label>Elukoha aadress</label>
                             <input ng-model="address" type="text">
                         </md-input-container>
-                        <div layout-xs="column" flex="25" flex-xs="100">
-                            <md-input-container>
-                                <label>Sihtnumber</label>
-                                <input ng-model="postcode" name="postcode" type="text" ng-pattern="/^\d+$/">
-                                <div ng-messages="policeForm.postcode.$error" role="alert">
-                                    <div ng-message-exp="['pattern']">
-                                        Sihtnumber peab sisaldama ainult numberid.
-                                    </div>
+                        <md-input-container flex="20" flex-xs="100">
+                            <label>Sihtnumber</label>
+                            <input ng-model="postcode" name="postcode" type="text" ng-pattern="/^\d+$/">
+                            <div ng-messages="policeForm.postcode.$error" role="alert">
+                                <div ng-message-exp="['pattern']">
+                                    Sihtnumber peab sisaldama ainult numberid.
                                 </div>
-                            </md-input-container>
-                            <md-input-container class="fix">
-                                <label>Maakond</label>
-                                <md-select ng-model="county">
-                                    <md-option ng-repeat="county in counties" value="{{county.id}}">
-                                        {{county.name}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex="25" flex-xs="100">
+                            <label>Maakond</label>
+                            <md-select ng-model="county">
+                                <md-option ng-repeat="county in counties" value="{{county.id}}">
+                                    {{county.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
                     </div>
 
-                    <div layout-xs="column" flex="30" flex-xs="100">
+                    <div layout-xs="column" flex="100">
                         <md-input-container flex="50" flex-xs="100">
                             <label>E-post</label>
                             <input ng-model="email" name="epost" type="email" required md-asterisk>
@@ -138,7 +136,7 @@
                         </md-input-container>
                     </div>
 
-                    <md-input-container flex="25" flex-xs="100">
+                    <md-input-container flex="20" flex-xs="100">
                         <label>Sobiv viis kontakteerumiseks</label>
                         <md-select ng-model="contact_manner">
                             <md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
@@ -163,7 +161,7 @@
                         <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
                     </md-input-container>
 
-                    <md-input-container ng-show=isACompany() flex="33">
+                    <md-input-container ng-show=isACompany() flex="33" flex-xs="100">
                         <label>Registrikood</label>
                         <input ng-model="registryCode" type="number">
                     </md-input-container>
