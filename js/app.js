@@ -384,7 +384,7 @@ policeApp.controller('formController', function ($scope, $http) {
     };
 
     $scope.submit = function () {
-        console.log('submit form');
+        console.log("submitted");
     };
 
     $scope.addNewItem = function () {

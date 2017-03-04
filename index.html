@@ -26,7 +26,7 @@
 <body>
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <md-content layout-padding>
-            <form role="form" ng-submit="submit()" name="policeForm">
+            <form role="form" name="policeForm" ng-submit="policeForm.$valid && submit()" novalidate>
                 <div layout="row" layout-xs="column" layout-wrap>
 
                     <md-input-container flex="100">
@@ -75,7 +75,7 @@
 
                     <md-input-container ng-show="isSelected(0)" flex="30" flex-xs="100">
                         <label>Isikukood</label>
-                        <input ng-model="idCode" name="idCode" type="text" required md-asterisk ng-pattern="/^\d+$/" ng-minlength="11" ng-maxlength="11">
+                        <input ng-model="idCode" name="idCode" type="text" ng-required="isSelected(0)" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11" ng-maxlength="11">
                         <div ng-messages="policeForm.idCode.$error" role="alert">
                             <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
                                 Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
@@ -85,7 +85,7 @@
 
                     <md-input-container ng-show="isSelected(1)" flex="30" flex-xs="100">
                         <label>Sünniaeg</label>
-                        <md-datepicker ng-model="dateOfBirth" required md-asterisk></md-datepicker>
+                        <md-datepicker ng-model="dateOfBirth" ng-required="isSelected(1)" md-asterisk></md-datepicker>
                     </md-input-container>
 
                     <div layout="row" layout-xs="column" flex="100">
@@ -469,7 +469,7 @@
                     </md-input-container>
 
                     <div>
-                        <md-button type="submit">Kinnita allkirjastamata</md-button>
+                        <md-button type="submit" class="md-raised md-primary">Kinnita allkirjastamata</md-button>
                     </div>
 
                 </div>
