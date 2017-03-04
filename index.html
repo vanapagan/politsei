@@ -26,7 +26,7 @@
 <body>
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <md-content layout-padding>
-            <form role="form" name="policeForm" ng-submit="policeForm.$valid && submit()" novalidate>
+            <form role="form" name="policeForm" ng-submit="submit(policeForm.$valid)" novalidate>
                 <div layout="row" layout-xs="column" layout-wrap>
 
                     <md-input-container flex="100">
@@ -75,12 +75,13 @@
 
                     <md-input-container ng-show="isSelected(0)" flex="30" flex-xs="100">
                         <label>Isikukood</label>
-                        <input ng-model="idCode" name="idCode" type="text" ng-required="isSelected(0)" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11" ng-maxlength="11">
-                        <div ng-messages="policeForm.idCode.$error" role="alert">
-                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
+                        <input ng-model="idCode" name="idCode" type="text" ng-required="isSelected(0)" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
+                            ng-maxlength="11">
+                            <div ng-messages="policeForm.idCode.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
+                                </div>
                             </div>
-                        </div>
                     </md-input-container>
 
                     <md-input-container ng-show="isSelected(1)" flex="30" flex-xs="100">
@@ -216,10 +217,8 @@
                         <label>Kirjeldus</label>
                         <textarea ng-model="desc" name="desc" required md-asterisk ng-minlength="15"></textarea>
                         <div ng-messages="policeForm.desc.$error" role="alert">
-
                             <div ng-message="required">See väli on kohustuslik.</div>
                             <div ng-message="minlength">Vähemalt 15 tähemärki.</div>
-
                         </div>
                     </md-input-container>
 

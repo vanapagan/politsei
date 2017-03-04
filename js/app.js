@@ -383,8 +383,12 @@ policeApp.controller('formController', function ($scope, $http) {
         });
     };
 
-    $scope.submit = function () {
-        console.log("submitted");
+    $scope.submit = function (isValid) {
+        if (isValid) {
+            console.log("Form submitted");
+        } else {
+            angular.element("[name='policeForm']").find('.ng-invalid:visible:first').focus();
+        }
     };
 
     $scope.addNewItem = function () {
