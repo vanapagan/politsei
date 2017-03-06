@@ -1,3 +1,32 @@
-.fix {
-	margin-top: -6px;
+
+h3,h1 {
+	text-align:center;
+	margin:10px;
+}
+
+#blocks {
+	background-color:green;
+}
+@media only screen and (min-width: 500px) {
+	#selectButtons {
+		margin-top: -7px;
+		margin-right: 20px;
+		margin-left: 20px;
+		
+	}
+	
+	.isikukood {
+		padding-left:64px;
+		padding-right:6px;
+		
+		
+	}
+	
+	@-moz-document url-prefix() {
+    .isikukood {
+        padding-bottom:7px;
+    }
+}
+	
+	
 }

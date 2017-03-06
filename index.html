@@ -26,7 +26,7 @@
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <md-content layout-padding>
             <form role="form" name="policeForm" ng-submit="submit(policeForm.$valid)" ng-show="showForm" novalidate>
-                <div layout="row" layout-xs="column" layout-wrap>
+                <div  layout="row" layout-align="center" layout-xs="column" layout-wrap>
 
                     <div flex="100">
                         <h1>Politseile avalduse esitamine</h1>
@@ -35,136 +35,153 @@
                     <md-input-container flex="100">
                         <md-button ng-click="populateWithTestData()">Täida vorm testandmetega</md-button>
                     </md-input-container>
+					
+						<div flex="100">
+							<h3>Teataja</h3>
+						</div>
 
-                    <div flex="100">
-                        <h3>Teataja</h3>
-                    </div>
+						<div flex="33" flex-xs="100" layout-xs="column">
+							<md-input-container>
+								<label>Eesnimi</label>
+								<input ng-model="firstName" name="firstName" type="text" md-maxlength="30" required md-asterisk>
+								<div ng-messages="policeForm.firstName.$error" role="alert">
+									<div ng-message="required">See väli on kohustuslik.</div>
+									<div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
+								</div>
+							</md-input-container>
+							<md-input-container>
+								<label>Perekonnanimi</label>
+								<input ng-model="lastName" name="lastName" type="text" md-maxlength="30" required md-asterisk>
+								<div ng-messages="policeForm.lastName.$error" role="alert">
+									<div ng-message="required">See väli on kohustuslik.</div>
+									<div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
+								</div>
+							</md-input-container>
+						</div>
 
-                    <div flex="33" flex-xs="100" layout-xs="column">
-                        <md-input-container>
-                            <label>Eesnimi</label>
-                            <input ng-model="firstName" name="firstName" type="text" md-maxlength="30" required md-asterisk>
-                            <div ng-messages="policeForm.firstName.$error" role="alert">
-                                <div ng-message="required">See väli on kohustuslik.</div>
-                                <div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Perekonnanimi</label>
-                            <input ng-model="lastName" name="lastName" type="text" md-maxlength="30" required md-asterisk>
-                            <div ng-messages="policeForm.lastName.$error" role="alert">
-                                <div ng-message="required">See väli on kohustuslik.</div>
-                                <div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
+						<md-input-container flex="15" flex-xs="100">
+							<label>Kodakondsus</label>
+							<md-select ng-model="citizenship">
+								<md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
+									{{citizenship.name}}
+								</md-option>
+							</md-select>
+						</md-input-container>
 
-                    <md-input-container flex="33" flex-xs="100">
-                        <label>Kodakondsus</label>
-                        <md-select ng-model="citizenship">
-                            <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
-                                {{citizenship.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-radio-group ng-model="radioCurrent" layout="row" flex="100" layout-xs="column" flex-xs="100">
-                        <div layout="column" flex="20" flex-xs="100">
-                            <md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
-                            <md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
-                        </div>
-                    </md-radio-group>
+						<div layout="row" layout-align="center" flex="100" layout-xs="column" flex-xs="100">
+						
+							<md-radio-group ng-model="radioCurrent" >
+								<div layout="column" flex="100" flex-xs="100">
+									<md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
+									<md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
+								</div>
+							</md-radio-group>
 
 
-                    <md-input-container ng-show="isSelected(0)" flex="30" flex-xs="100">
-                        <label>Isikukood</label>
-                        <input ng-model="idCode" name="idCode" type="text" ng-required="isSelected(0)" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
-                            ng-maxlength="11">
-                            <div ng-messages="policeForm.idCode.$error" role="alert">
-                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                    Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
-                                </div>
-                            </div>
-                    </md-input-container>
+							<md-input-container ng-show="isSelected(0)" flex="14" flex-xs="100" class="isikukood">
+								<label style="padding-left:64px;">Isikukood</label>
+								<input ng-model="idCode" name="idCode" type="text" ng-required="isSelected(0)" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
+									ng-maxlength="11">
+									<div ng-messages="policeForm.idCode.$error" role="alert">
+										<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+											Täpselt 11 tähemärki pikk ja ainult numbrid.
+										</div>
+									</div>
+							</md-input-container>
 
-                    <md-input-container ng-show="isSelected(1)" flex="30" flex-xs="100">
-                        <label>Sünniaeg</label>
-                        <md-datepicker ng-model="dateOfBirth" ng-required="isSelected(1)" md-asterisk></md-datepicker>
-                    </md-input-container>
+							<md-input-container ng-show="isSelected(1)" flex="20" flex-xs="100">
+								<label>Sünniaeg</label>
+								<md-datepicker ng-model="dateOfBirth" ng-required="isSelected(1)" md-asterisk></md-datepicker>
+							</md-input-container>
+							
+							<md-input-container flex="20" flex-xs="100">
+								<label>Telefon:</label>
+								<input ng-model="phone" name="phone" type="text" required md-asterisk ng-pattern="/^\d+$/">
+								<div ng-messages="policeForm.phone.$error" role="alert">
+									<div ng-message="required">See väli on kohustuslik.</div>
+									<div ng-message="pattern">Lubatud ainult numbrid.</div>
+								</div>
+							</md-input-container>
+						
+						</div>
+						
+						
+						<div layout="row" layout-align="center" layout-xs="column" flex="50">
+						
+							<md-input-container flex="40" flex-xs="100">
+								<label>E-post</label>
+								<input ng-model="email" name="epost" type="email" required md-asterisk>
+								<div ng-messages="policeForm.epost.$error" role="alert">
+									<div ng-message="required">See väli on kohustuslik.</div>
+									<div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
+								</div>
+							</md-input-container>
+							
+							<md-input-container flex flex-xs="100">
+								<label>Elukoha aadress</label>
+								<input ng-model="address" type="text">
+							</md-input-container>
+						</div>	
+						
+						<div layout="row" layout-align="center" layout-xs="column" flex="100" >
+						<div layout="row" layout-align="center" layout-xs="column" flex="50">
+							<md-input-container flex="33" flex-xs="100">
+								<label>Sihtnumber</label>
+								<input ng-model="postcode" name="postcode" type="text" ng-pattern="/^\d+$/">
+								<div ng-messages="policeForm.postcode.$error" role="alert">
+									<div ng-message-exp="['pattern']">
+										Lubatud ainult numbrid.
+									</div>
+								</div>
+							</md-input-container>
+							
+							<md-input-container flex="33" flex-xs="100">
+								<label>Maakond</label>
+								<md-select ng-model="county">
+									<md-option ng-repeat="county in counties" value="{{county.id}}">
+										{{county.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+							
+							<md-input-container flex flex-xs="100">
+							<div >
+								<label>Amet</label>
+								<input ng-model="occupation" type="text" pattern="[a-zA-Z]+">
+							</div>
+							</md-input-container>
+						</div>
+						</div>
 
-                    <div layout="row" layout-xs="column" flex="100">
-                        <md-input-container flex="50" flex-xs="100">
-                            <label>Elukoha aadress</label>
-                            <input ng-model="address" type="text">
-                        </md-input-container>
-                        <md-input-container flex="20" flex-xs="100">
-                            <label>Sihtnumber</label>
-                            <input ng-model="postcode" name="postcode" type="text" ng-pattern="/^\d+$/">
-                            <div ng-messages="policeForm.postcode.$error" role="alert">
-                                <div ng-message-exp="['pattern']">
-                                    Sihtnumber peab sisaldama ainult numberid.
-                                </div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex="25" flex-xs="100">
-                            <label>Maakond</label>
-                            <md-select ng-model="county">
-                                <md-option ng-repeat="county in counties" value="{{county.id}}">
-                                    {{county.name}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
+					   <div layout="row" layout-align="center" layout-xs="column" flex="100" >
+							<md-input-container flex="25" flex-xs="100">
+								<label>Sobiv viis kontakteerumiseks</label>
+								<md-select ng-model="contact_manner">
+									<md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
+										{{cm.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
 
-                    <div layout-xs="column" flex="100">
-                        <md-input-container flex="50" flex-xs="100">
-                            <label>E-post</label>
-                            <input ng-model="email" name="epost" type="email" required md-asterisk>
-                            <div ng-messages="policeForm.epost.$error" role="alert">
-                                <div ng-message="required">See väli on kohustuslik.</div>
-                                <div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex="50" flex-xs="100">
-                            <label>Telefon:</label>
-                            <input ng-model="phone" name="phone" type="text" required md-asterisk ng-pattern="/^\d+$/">
-                            <div ng-messages="policeForm.phone.$error" role="alert">
-                                <div ng-message="required">See väli on kohustuslik.</div>
-                                <div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
-                            </div>
-                        </md-input-container>
-                    </div>
+							<md-input-container flex="25" flex-xs="100">
+								<label>Sobiv aeg kontakteerumiseks</label>
+								<input ng-model="contact_time" type="text">
+							</md-input-container>
+							
+						</div>
+		  
+						<div layout="row" layout-align="right" layout-xs="column" flex="50">
+						<md-input-container flex="50" flex-xs="100">
+							<md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
+						</md-input-container>
 
-                    <md-input-container flex="20" flex-xs="100">
-                        <label>Sobiv viis kontakteerumiseks</label>
-                        <md-select ng-model="contact_manner">
-                            <md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
-                                {{cm.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-input-container flex="25" flex-xs="100">
-                        <label>Sobiv aeg kontakteerumiseks</label>
-                        <input ng-model="contact_time" type="text">
-                    </md-input-container>
-
-                    <md-input-container flex="100" flex-xs="100">
-                        <div flex="20" flex-xs="100">
-                            <label>Amet</label>
-                            <input ng-model="occupation" type="text" pattern="[a-zA-Z]+">
-                        </div>
-                    </md-input-container>
-
-                    <md-input-container flex="100">
-                        <md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
-                    </md-input-container>
-
-                    <md-input-container ng-show=isACompany() flex="33" flex-xs="100">
-                        <label>Registrikood</label>
-                        <input ng-model="registryCode" type="number">
-                    </md-input-container>
-
+						<md-input-container ng-show=isACompany() flex="50" flex-xs="100">
+							<label>Registrikood</label>
+							<input ng-model="registryCode" type="number">
+						</md-input-container>
+						</div>
+						
+					
                     <div class="md-block" flex="100">
                         <h3>Sündmuse toimumise aeg</h3>
                     </div>
