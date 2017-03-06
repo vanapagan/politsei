@@ -26,30 +26,31 @@
     <div ng-controller="formController" layout="column" ng-cloak class="md-inline-form">
         <md-content layout-padding>
             <form role="form" name="policeForm" ng-submit="submit(policeForm.$valid)" ng-show="showForm" novalidate>
-                <div  layout="row" layout-align="center" layout-xs="column" layout-wrap>
+                <div  layout="column" layout-align="center" layout-xs="column" layout-wrap align="center">
 
                     <div flex="100">
                         <h1>Politseile avalduse esitamine</h1>
                     </div>
-
-                    <md-input-container flex="100">
-                        <md-button ng-click="populateWithTestData()">Täida vorm testandmetega</md-button>
+					<div   flex-xs="100"  layout="row" layout-align="center" layout-xs="column">
+                    <md-input-container  >
+                        <md-button flex flex-xs="100" class="md-raised"  ng-click="populateWithTestData()">Täida vorm testandmetega</md-button>
                     </md-input-container>
-					
-						<div flex="100">
+					</div>
+					<div class="blocks" align="center">
+						<div "flex="100">
 							<h3>Teataja</h3>
 						</div>
 
-						<div flex="33" flex-xs="100" layout-xs="column">
-							<md-input-container>
+						<div  flex flex-xs="100"  layout="row" layout-align="center" layout-xs="column">
+							<md-input-container flex="33">
 								<label>Eesnimi</label>
 								<input ng-model="firstName" name="firstName" type="text" md-maxlength="30" required md-asterisk>
 								<div ng-messages="policeForm.firstName.$error" role="alert">
 									<div ng-message="required">See väli on kohustuslik.</div>
 									<div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
 								</div>
-							</md-input-container>
-							<md-input-container>
+							</md-input-container flex="33">
+							<md-input-container >
 								<label>Perekonnanimi</label>
 								<input ng-model="lastName" name="lastName" type="text" md-maxlength="30" required md-asterisk>
 								<div ng-messages="policeForm.lastName.$error" role="alert">
@@ -57,16 +58,19 @@
 									<div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
 								</div>
 							</md-input-container>
-						</div>
-
-						<md-input-container flex="15" flex-xs="100">
+							
+							<md-input-container flex="33" flex-xs="100">
 							<label>Kodakondsus</label>
 							<md-select ng-model="citizenship">
 								<md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
 									{{citizenship.name}}
 								</md-option>
 							</md-select>
-						</md-input-container>
+							</md-input-container>
+						
+						</div>
+
+						
 
 						<div layout="row" layout-align="center" flex="100" layout-xs="column" flex-xs="100">
 						
@@ -106,7 +110,8 @@
 						</div>
 						
 						
-						<div layout="row" layout-align="center" layout-xs="column" flex="50">
+						<div layout="row" layout-align="center" layout-xs="column" 
+						flex="100">
 						
 							<md-input-container flex="40" flex-xs="100">
 								<label>E-post</label>
@@ -124,7 +129,7 @@
 						</div>	
 						
 						<div layout="row" layout-align="center" layout-xs="column" flex="100" >
-						<div layout="row" layout-align="center" layout-xs="column" flex="50">
+						
 							<md-input-container flex="33" flex-xs="100">
 								<label>Sihtnumber</label>
 								<input ng-model="postcode" name="postcode" type="text" ng-pattern="/^\d+$/">
@@ -144,17 +149,17 @@
 								</md-select>
 							</md-input-container>
 							
-							<md-input-container flex flex-xs="100">
+							<md-input-container flex="33" flex-xs="100">
 							<div >
 								<label>Amet</label>
 								<input ng-model="occupation" type="text" pattern="[a-zA-Z]+">
 							</div>
 							</md-input-container>
-						</div>
+						
 						</div>
 
 					   <div layout="row" layout-align="center" layout-xs="column" flex="100" >
-							<md-input-container flex="25" flex-xs="100">
+							<md-input-container flex="50" flex-xs="100">
 								<label>Sobiv viis kontakteerumiseks</label>
 								<md-select ng-model="contact_manner">
 									<md-option ng-repeat="cm in contact_manners" value="{{cm.id}}">
@@ -163,172 +168,189 @@
 								</md-select>
 							</md-input-container>
 
-							<md-input-container flex="25" flex-xs="100">
+							<md-input-container flex="50" flex-xs="100">
 								<label>Sobiv aeg kontakteerumiseks</label>
 								<input ng-model="contact_time" type="text">
 							</md-input-container>
 							
 						</div>
 		  
-						<div layout="row" layout-align="right" layout-xs="column" flex="50">
+						<div layout="row"   layout-xs="column" flex="100">
+						
 						<md-input-container flex="50" flex-xs="100">
 							<md-checkbox ng-model="person_is_jur" aria-label="Kannatanu on juriidiline isik">Kannatanu on juriidiline isik</md-checkbox>
 						</md-input-container>
-
+						
 						<md-input-container ng-show=isACompany() flex="50" flex-xs="100">
 							<label>Registrikood</label>
 							<input ng-model="registryCode" type="number">
 						</md-input-container>
 						</div>
 						
-					
-                    <div class="md-block" flex="100">
-                        <h3>Sündmuse toimumise aeg</h3>
+					</div>
+					<div class="blocks" align="center">
+						<div class="md-block"  flex="100">
+							<h3>Sündmuse toimumise aeg</h3>
+						</div>
+						<div layout="row" layout-align="center" layout-xs="column" flex="100" >
+							<md-input-container flex="30" flex-xs="100">
+								<label>Kellaaeg</label>
+								<input ng-model="timeOfIncident" type="time">
+							</md-input-container>
+							<md-input-container flex="35" flex-xs="100">
+								<label>Kuupäev</label>
+								<md-datepicker ng-model="dateOfIncident"></md-datepicker>
+							</md-input-container>
+						</div>
                     </div>
+					<div class="blocks" align="center">
+						<div  flex="100">
+							<h3>Sündmuse toimumise koht</h3>
+						</div>
+						<div layout="row" layout-align="center" layout-xs="column" flex="100" >
+							<md-input-container flex="33" flex-xs="100">
+								<label>Riik</label>
+								<md-select ng-model="country">
+									<md-option ng-repeat="country in citizenships" value="{{country.id}}">
+										{{country.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+							
+							<md-input-container flex-gt-xs="30" flex-xs="100">
+								<label>Prefektuur</label>
+								<md-select ng-model="police_area">
+									<md-option ng-repeat="area in police_areas" value="{{area.id}}">
+										{{area.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
 
-                    <md-input-container flex="15" flex-xs="100">
-                        <label>Kellaaeg</label>
-                        <input ng-model="timeOfIncident" type="time">
-                    </md-input-container>
-                    <md-input-container flex="85" flex-xs="100">
-                        <label>Kuupäev</label>
-                        <md-datepicker ng-model="dateOfIncident"></md-datepicker>
-                    </md-input-container>
+							
 
-                    <div class="md-block" flex="100">
-                        <h3>Sündmuse toimumise koht</h3>
-                    </div>
-
-                    <md-input-container flex-gt-xs="33" flex-xs="100">
-                        <label>Prefektuur</label>
-                        <md-select ng-model="police_area">
-                            <md-option ng-repeat="area in police_areas" value="{{area.id}}">
-                                {{area.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-input-container flex="35" flex-xs="100">
-                        <label>Riik</label>
-                        <md-select ng-model="country">
-                            <md-option ng-repeat="country in citizenships" value="{{country.id}}">
-                                {{country.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-input-container flex="33" flex-xs="100">
-                        <label>Toimumise koht</label>
-                        <input ng-model="place" type="text">
-                    </md-input-container>
-
-                    <md-input-container flex="35" flex-xs="100">
-                        <label>Aadress</label>
-                        <input ng-model="incidentAddress" type="text">
-                    </md-input-container>
-
+							<md-input-container flex="33" flex-xs="100">
+								<label>Toimumise koht</label>
+								<input ng-model="place" type="text">
+							</md-input-container>
+						</div>
+						<div layout="row" layout-align="center" layout-xs="column" flex="100">
+							<md-input-container flex flex-xs="100">
+								<label>Aadress</label>
+								<input ng-model="incidentAddress" type="text">
+							</md-input-container>
+						</div>
+					</div>
+					<div class="blocks" align="center">
                     <div class="md-block" flex="100">
                         <h3>Toimunu kirjeldus</h3>
                     </div>
+					<div layout="row" layout-align="center" layout-xs="column" flex="100">
+						<md-input-container flex flex-xs="100">
+							<label>Kirjeldus</label>
+							<textarea ng-model="desc" name="desc" required md-asterisk ng-minlength="15"></textarea>
+							<div ng-messages="policeForm.desc.$error" role="alert">
+								<div ng-message="required">See väli on kohustuslik.</div>
+								<div ng-message="minlength">Vähemalt 15 tähemärki.</div>
+							</div>
+						</md-input-container>
+					</div>
+						<div layout="row" layout-align="center" layout-xs="column" flex="100">
+							<md-input-container flex="40" flex-xs="100">
+								<label>Tekitatud varaline kahju €</label>
+								<input ng-model="damage" type="number" ng-pattern="/^\d+$/">
+							</md-input-container>
+						</div>
+					</div>
+					
+					
+					
+					<div class="blocks" align="center">
+						<div class="md-block" flex="100">
+							<h3>Ära võetud/viidud/saamata jäänud vara</h3>
+						</div>
 
-                    <md-input-container flex="100">
-                        <label>Kirjeldus</label>
-                        <textarea ng-model="desc" name="desc" required md-asterisk ng-minlength="15"></textarea>
-                        <div ng-messages="policeForm.desc.$error" role="alert">
-                            <div ng-message="required">See väli on kohustuslik.</div>
-                            <div ng-message="minlength">Vähemalt 15 tähemärki.</div>
-                        </div>
-                    </md-input-container>
+						<div data-ng-repeat="item in items" flex="100">
 
-                    <md-input-container flex="20" flex-xs="100">
-                        <label>Tekitatud varaline kahju €</label>
-                        <input ng-model="damage" type="number" ng-pattern="/^\d+$/">
-                    </md-input-container>
+							<div layout="row" flex="100">
+								<h4>VARA #{{item.output_id}}</h4>
+								<md-button class="md-raised" ng-click="removeItem(item)">Eemalda</md-button>
+							</div>
 
-                    <div class="md-block" flex="100">
-                        <h3>Ära võetud/viidud/saamata jäänud vara</h3>
-                    </div>
+							<div layout="row" layout-xs="column">
+								<md-input-container flex="33" flex-xs="100">
+									<label>Eseme nimetus</label>
+									<input ng-model="item.name" type="text">
+								</md-input-container>
+								<md-input-container flex="33" flex-xs="100">
+									<label>Soetamise aasta</label>
+									<input name="itemYear" ng-model="item.year" type="number" min="0" max="2017">
+									<div ng-messages="policeForm.itemYear.$error" role="alert">
+									 <div ng-message-exp="['min', 'max']">
+										Aasta peab olema vahemikus 0 kuni 2017
+									</div>
+								</div>
+								</md-input-container>
+								<md-input-container flex="33" flex-xs="100">
+									<label>Ligikaudne hetkeväärtus</label>
+									<input name="itemValue" ng-model="item.value" type="number" min="0">
+									<div ng-messages="policeForm.itemValue.$error" role="alert">
+									<div ng-message-exp="['min']">
+										Vara väärtus ei saa olla väiksem kui 0
+									</div>
+								</div>
+								</md-input-container>
+							</div>
 
-                    <div data-ng-repeat="item in items" flex="100">
+							<div layout="column">
+								<div class="md-block" flex="100">
+									<p>Vara/valdus olemas (viimati kannatanul/teatajal ese/asi olemas)</p>
+								</div>
+								<div layout="row" layout-xs="column">
+									<md-input-container flex="15" flex-xs="100">
+										<label>Kellaaeg</label>
+										<input ng-model="item.timeLastThere" type="time">
+									</md-input-container>
+									<md-input-container flex="85" flex-xs="100">
+										<label>Kuupäev</label>
+										<md-datepicker ng-model="item.dateLastThere"></md-datepicker>
+									</md-input-container>
+								</div>
+							</div>
 
-                        <div layout="row" flex="100">
-                            <h4>VARA #{{item.output_id}}</h4>
-                            <md-button ng-click="removeItem(item)">Eemalda</md-button>
-                        </div>
+							<div layout="column">
+								<div class="md-block" flex="100">
+									<p>Vara valdusest väljaminek on tuvastatud (polnud enam eset/asja teatajal/kannatanul olemas)</p>
+								</div>
+								<div layout="row" layout-xs="column">
+									<md-input-container flex="15" flex-xs="100">
+										<label>Kellaaeg</label>
+										<input ng-model="item.timeWentMissing" type="time">
+									</md-input-container>
+									<md-input-container flex="85" flex-xs="100">
+										<label>Kuupäev</label>
+										<md-datepicker ng-model="item.dateWentMissing"></md-datepicker>
+									</md-input-container>
+								</div>
+							</div>
 
-                        <div layout="row" layout-xs="column">
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Eseme nimetus</label>
-                                <input ng-model="item.name" type="text">
-                            </md-input-container>
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Soetamise aasta</label>
-                                <input name="itemYear" ng-model="item.year" type="number" min="0" max="2017">
-                                <div ng-messages="policeForm.itemYear.$error" role="alert">
-                                 <div ng-message-exp="['min', 'max']">
-                                    Aasta peab olema vahemikus 0 kuni 2017
-                                </div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Ligikaudne hetkeväärtus</label>
-                                <input name="itemValue" ng-model="item.value" type="number" min="0">
-                                <div ng-messages="policeForm.itemValue.$error" role="alert">
-                                <div ng-message-exp="['min']">
-                                    Vara väärtus ei saa olla väiksem kui 0
-                                </div>
-                            </div>
-                            </md-input-container>
-                        </div>
+							<div layout="column">
+								<md-input-container flex="100">
+									<md-checkbox ng-model="item.wasInALockedRoom" aria-label="Vara oli lukustatud ruumis">Vara oli lukustatud ruumis</md-checkbox>
+								</md-input-container>
 
-                        <div layout="column">
-                            <div class="md-block" flex="100">
-                                <p>Vara/valdus olemas (viimati kannatanul/teatajal ese/asi olemas)</p>
-                            </div>
-                            <div layout="row" layout-xs="column">
-                                <md-input-container flex="15" flex-xs="100">
-                                    <label>Kellaaeg</label>
-                                    <input ng-model="item.timeLastThere" type="time">
-                                </md-input-container>
-                                <md-input-container flex="85" flex-xs="100">
-                                    <label>Kuupäev</label>
-                                    <md-datepicker ng-model="item.dateLastThere"></md-datepicker>
-                                </md-input-container>
-                            </div>
-                        </div>
+								<md-input-container flex="100">
+									<label>Tundemärgid ja eritunnused (sh raaminumber, seerianumber, IMEI-kood jm)</label>
+									<input ng-model="item.identification" type="text">
+								</md-input-container>
+							</div>
+						</div>
 
-                        <div layout="column">
-                            <div class="md-block" flex="100">
-                                <p>Vara valdusest väljaminek on tuvastatud (polnud enam eset/asja teatajal/kannatanul olemas)</p>
-                            </div>
-                            <div layout="row" layout-xs="column">
-                                <md-input-container flex="15" flex-xs="100">
-                                    <label>Kellaaeg</label>
-                                    <input ng-model="item.timeWentMissing" type="time">
-                                </md-input-container>
-                                <md-input-container flex="85" flex-xs="100">
-                                    <label>Kuupäev</label>
-                                    <md-datepicker ng-model="item.dateWentMissing"></md-datepicker>
-                                </md-input-container>
-                            </div>
-                        </div>
-
-                        <div layout="column">
-                            <md-input-container flex="100">
-                                <md-checkbox ng-model="item.wasInALockedRoom" aria-label="Vara oli lukustatud ruumis">Vara oli lukustatud ruumis</md-checkbox>
-                            </md-input-container>
-
-                            <md-input-container flex="100">
-                                <label>Tundemärgid ja eritunnused (sh raaminumber, seerianumber, IMEI-kood jm)</label>
-                                <input ng-model="item.identification" type="text">
-                            </md-input-container>
-                        </div>
-                    </div>
-
-                    <md-input-container flex="100">
-                        <md-button ng-click="addNewItem()">Lisa vara</md-button>
-                    </md-input-container>
-
+						<md-input-container flex="100">
+							<md-button class="md-raised" ng-click="addNewItem()">Lisa vara</md-button>
+						</md-input-container>
+						
+					</div>
+					
                     <div class="md-block" flex="100">
                         <h3>Süüteo toime pannud isiku(te) andmed</h3>
                     </div>
