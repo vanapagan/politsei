@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/jq.progress-bar.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
@@ -247,11 +246,21 @@
                             </md-input-container>
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Soetamise aasta</label>
-                                <input ng-model="item.year" type="number">
+                                <input name="itemYear" ng-model="item.year" type="number" min="0" max="2017">
+                                <div ng-messages="policeForm.itemYear.$error" role="alert">
+                                 <div ng-message-exp="['min', 'max']">
+                                    Aasta peab olema vahemikus 0 kuni 2017
+                                </div>
+                            </div>
                             </md-input-container>
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Ligikaudne hetkeväärtus</label>
-                                <input ng-model="item.value" type="number">
+                                <input name="itemValue" ng-model="item.value" type="number" min="0">
+                                <div ng-messages="policeForm.itemValue.$error" role="alert">
+                                <div ng-message-exp="['min']">
+                                    Vara väärtus ei saa olla väiksem kui 0
+                                </div>
+                            </div>
                             </md-input-container>
                         </div>
 
@@ -317,18 +326,30 @@
                         <div layout-xs="column">
                             <md-input-container>
                                 <label>Eesnimi</label>
-                                <input ng-model="perp.firstName" type="text">
+                                <input name="perpFirstName" ng-model="perp.firstName" type="text" md-maxlength="30" md-asterisk>
+                            <div ng-messages="policeForm.perpFirstName.$error" role="alert">
+                            <div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
+                            </div>
                             </md-input-container>
                             <md-input-container>
                                 <label>Perekonnanimi</label>
-                                <input ng-model="perp.lastName" type="text">
+                                <input name="perpLastName" ng-model="perp.lastName" type="text" md-maxlength="30" md-asterisk>
+                            <div ng-messages="policeForm.perpLastName.$error" role="alert">
+                            <div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
+                            </div>
                             </md-input-container>
                         </div>
 
                         <div layout-xs="column">
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Isikukood</label>
-                                <input ng-model="perp.idCode" type="text">
+                                <input ng-model="perp.idCode" type="text" name="perpidCode" type="text" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
+                            ng-maxlength="11">
+                            <div ng-messages="policeForm.perpidCode.$error" role="alert">
+                                <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
+                                    Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
+                                </div>
+                            </div>
                             </md-input-container>
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Sünniaeg</label>
@@ -363,11 +384,17 @@
                         <div layout-xs="column">
                             <md-input-container>
                                 <label>E-post</label>
-                                <input ng-model="perp.email" type="email">
+                                <input ng-model="perp.email" type="email" name="perpepost" type="email" md-asterisk>
+                            <div ng-messages="policeForm.perpepost.$error" role="alert">
+                                <div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
+                            </div>
                             </md-input-container>
                             <md-input-container>
                                 <label>Telefon</label>
-                                <input ng-model="perp.phone" type="number">
+                                <input ng-model="perp.phone" name="perpPhone" type="text" ng-pattern="/^\d+$/">
+                            <div ng-messages="policeForm.perpPhone.$error" role="alert">
+                                <div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
+                            </div>
                             </md-input-container>
                         </div>
 
@@ -398,18 +425,29 @@
                         <div layout-xs="column">
                             <md-input-container>
                                 <label>Eesnimi</label>
-                                <input ng-model="witness.firstName" type="text">
+                                <input ng-model="witness.firstName" name="witnessFirstName" type="text" md-maxlength="30" md-asterisk>
+                            <div ng-messages="policeForm.eitnessFirstName.$error" role="alert">
+                            <div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
+                            </div>
                             </md-input-container>
                             <md-input-container>
                                 <label>Perekonnanimi</label>
-                                <input ng-model="witness.lastName" type="text">
+                                <input ng-model="witness.lastName" name="witnessLastName" type="text" md-maxlength="30" md-asterisk>
+                            <div ng-messages="policeForm.witnessLastName.$error" role="alert">
+                            <div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
+                            </div>
                             </md-input-container>
                         </div>
 
                         <div layout-xs="column">
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Isikukood</label>
-                                <input ng-model="witness.idCode" type="text">
+                                <input ng-model="witness.idCode" type="text" name="witnessidCode" type="text" ng-pattern="/^\d+$/" ng-minlength="11"     ng-maxlength="11">
+                            <div ng-messages="policeForm.witnessidCode.$error" role="alert">
+                                <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
+                                    Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
+                                </div>
+                            </div>
                             </md-input-container>
                             <md-input-container flex="33" flex-xs="100">
                                 <label>Sünniaeg</label>
@@ -444,11 +482,17 @@
                         <div layout-xs="column">
                             <md-input-container>
                                 <label>E-post</label>
-                                <input ng-model="witness.email" type="email">
+                                <input ng-model="witness.email" type="email" name="witnessepost" type="email">
+                            <div ng-messages="policeForm.witnessepost.$error" role="alert">
+                                <div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
+                            </div>
                             </md-input-container>
                             <md-input-container>
                                 <label>Telefon</label>
-                                <input ng-model="witness.phone" type="number">
+                                <input ng-model="witness.phone" name="witnessPhone" type="text" ng-pattern="/^\d+$/">
+                            <div ng-messages="policeForm.witnessPhone.$error" role="alert">
+                                <div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
+                            </div>
                             </md-input-container>
                         </div>
 
