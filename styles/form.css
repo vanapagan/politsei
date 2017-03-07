@@ -11,6 +11,7 @@ h3,h1 {
 		 width:49%;
 		 margin-bottom:3%;
 		 padding:2%;
+		 
 	}
 	   
 	#selectButtons {
@@ -31,7 +32,14 @@ h3,h1 {
     .isikukood {
         padding-bottom:7px;
     }
+	.blocks { 
+		margin:15px auto;
+		
+	}
+	
+	
 }
+
 	
 	
 }
