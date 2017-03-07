@@ -42,15 +42,15 @@
 						</div>
 
 						<div  flex flex-xs="100"  layout="row" layout-align="center" layout-xs="column">
-							<md-input-container flex="33">
+							<md-input-container flex="33" flex-xs="100">
 								<label>Eesnimi</label>
 								<input ng-model="firstName" name="firstName" type="text" md-maxlength="30" required md-asterisk>
 								<div ng-messages="policeForm.firstName.$error" role="alert">
 									<div ng-message="required">See väli on kohustuslik.</div>
 									<div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
 								</div>
-							</md-input-container flex="33">
-							<md-input-container >
+							</md-input-container >
+							<md-input-container flex="33" flex-xs="100">
 								<label>Perekonnanimi</label>
 								<input ng-model="lastName" name="lastName" type="text" md-maxlength="30" required md-asterisk>
 								<div ng-messages="policeForm.lastName.$error" role="alert">
@@ -75,14 +75,14 @@
 						<div layout="row" layout-align="center" flex="100" layout-xs="column" flex-xs="100">
 						
 							<md-radio-group ng-model="radioCurrent" >
-								<div layout="column" flex="100" flex-xs="100">
+								<div layout="column" flex="33" flex-xs="100">
 									<md-radio-button value="0" ng-click="selectRadio(0)">Isikukood</md-radio-button>
 									<md-radio-button value="1" ng-click="selectRadio(1)">Sünniaeg</md-radio-button>
 								</div>
 							</md-radio-group>
 
 
-							<md-input-container ng-show="isSelected(0)" flex="14" flex-xs="100" class="isikukood">
+							<md-input-container ng-show="isSelected(0)" flex="33" flex-xs="100" class="isikukood">
 								<label style="padding-left:64px;">Isikukood</label>
 								<input ng-model="idCode" name="idCode" type="text" ng-required="isSelected(0)" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
 									ng-maxlength="11">
@@ -93,7 +93,7 @@
 									</div>
 							</md-input-container>
 
-							<md-input-container ng-show="isSelected(1)" flex="20" flex-xs="100">
+							<md-input-container ng-show="isSelected(1)" flex="33" flex-xs="100">
 								<label>Sünniaeg</label>
 								<md-datepicker ng-model="dateOfBirth" ng-required="isSelected(1)" md-asterisk></md-datepicker>
 							</md-input-container>
@@ -193,11 +193,11 @@
 							<h3>Sündmuse toimumise aeg</h3>
 						</div>
 						<div layout="row" layout-align="center" layout-xs="column" flex="100" >
-							<md-input-container flex="30" flex-xs="100">
+							<md-input-container flex="40" flex-xs="100">
 								<label>Kellaaeg</label>
 								<input ng-model="timeOfIncident" type="time">
 							</md-input-container>
-							<md-input-container flex="35" flex-xs="100">
+							<md-input-container flex="45" flex-xs="100">
 								<label>Kuupäev</label>
 								<md-datepicker ng-model="dateOfIncident"></md-datepicker>
 							</md-input-container>
@@ -270,32 +270,32 @@
 						</div>
 
 						<div data-ng-repeat="item in items" flex="100">
-
-							<div layout="row" flex="100">
+							
+							<div layout="row" layout-align="center" flex="100">
 								<h4>VARA #{{item.output_id}}</h4>
-								<md-button class="md-raised" ng-click="removeItem(item)">Eemalda</md-button>
+								<md-button class="md-raised" style="margin-top: -1px;"ng-click="removeItem(item)">Eemalda</md-button>
 							</div>
-
-							<div layout="row" layout-xs="column">
-								<md-input-container flex="33" flex-xs="100">
+							
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column" style="margin-bottom:10px;">
+								<md-input-container flex="28" flex-xs="100">
 									<label>Eseme nimetus</label>
 									<input ng-model="item.name" type="text">
 								</md-input-container>
-								<md-input-container flex="33" flex-xs="100">
+								<md-input-container flex="30" flex-xs="100">
 									<label>Soetamise aasta</label>
 									<input name="itemYear" ng-model="item.year" type="number" min="0" max="2017">
 									<div ng-messages="policeForm.itemYear.$error" role="alert">
 									 <div ng-message-exp="['min', 'max']">
-										Aasta peab olema vahemikus 0 kuni 2017
+										Vahemikus 0 kuni 2017
 									</div>
 								</div>
 								</md-input-container>
-								<md-input-container flex="33" flex-xs="100">
+								<md-input-container flex="40" flex-xs="100">
 									<label>Ligikaudne hetkeväärtus</label>
 									<input name="itemValue" ng-model="item.value" type="number" min="0">
 									<div ng-messages="policeForm.itemValue.$error" role="alert">
 									<div ng-message-exp="['min']">
-										Vara väärtus ei saa olla väiksem kui 0
+										Vara väärtus ei saa olla väiksem kui 0.
 									</div>
 								</div>
 								</md-input-container>
@@ -305,12 +305,12 @@
 								<div class="md-block" flex="100">
 									<p>Vara/valdus olemas (viimati kannatanul/teatajal ese/asi olemas)</p>
 								</div>
-								<div layout="row" layout-xs="column">
-									<md-input-container flex="15" flex-xs="100">
+								<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+									<md-input-container flex="35" flex-xs="100">
 										<label>Kellaaeg</label>
 										<input ng-model="item.timeLastThere" type="time">
 									</md-input-container>
-									<md-input-container flex="85" flex-xs="100">
+									<md-input-container flex="35" flex-xs="100">
 										<label>Kuupäev</label>
 										<md-datepicker ng-model="item.dateLastThere"></md-datepicker>
 									</md-input-container>
@@ -321,12 +321,12 @@
 								<div class="md-block" flex="100">
 									<p>Vara valdusest väljaminek on tuvastatud (polnud enam eset/asja teatajal/kannatanul olemas)</p>
 								</div>
-								<div layout="row" layout-xs="column">
-									<md-input-container flex="15" flex-xs="100">
+								<div  layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+									<md-input-container flex="35" flex-xs="100">
 										<label>Kellaaeg</label>
 										<input ng-model="item.timeWentMissing" type="time">
 									</md-input-container>
-									<md-input-container flex="85" flex-xs="100">
+									<md-input-container flex="35" flex-xs="100">
 										<label>Kuupäev</label>
 										<md-datepicker ng-model="item.dateWentMissing"></md-datepicker>
 									</md-input-container>
@@ -351,211 +351,222 @@
 						
 					</div>
 					
-                    <div class="md-block" flex="100">
-                        <h3>Süüteo toime pannud isiku(te) andmed</h3>
+					<div class="blocks" align="center">
+						<div class="md-block" flex="100">
+							<h3>Süüteo toime pannud isiku(te) andmed</h3>
+						</div>
+
+						<div data-ng-repeat="perp in perpetrators" flex="100">
+
+							<div layout="row" flex="100" layout-align="center">
+								<h4>SÜÜTEO TOIME PANNUD ISIK #{{perp.output_id}}</h4>
+								<md-button style="margin-top:-1px; "class="md-raised" ng-click="removePerp(perp)">Eemalda</md-button>
+							</div>
+
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container>
+									<label>Eesnimi</label>
+									<input name="perpFirstName" ng-model="perp.firstName" type="text" md-maxlength="30" md-asterisk>
+								<div ng-messages="policeForm.perpFirstName.$error" role="alert">
+								<div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
+								</div>
+								</md-input-container>
+								<md-input-container>
+									<label>Perekonnanimi</label>
+									<input name="perpLastName" ng-model="perp.lastName" type="text" md-maxlength="30" md-asterisk>
+								<div ng-messages="policeForm.perpLastName.$error" role="alert">
+								<div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
+								</div>
+								</md-input-container>
+								
+								<md-input-container flex="33" flex-xs="100">
+								<label>Kodakondsus</label>
+								<md-select ng-model="perp.citizenship">
+									<md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
+										{{citizenship.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+							</div>
+
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container flex="33" flex-xs="100">
+									<label>Isikukood</label>
+									<input ng-model="perp.idCode" type="text" name="perpidCode" type="text" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
+								ng-maxlength="11">
+								<div ng-messages="policeForm.perpidCode.$error" role="alert">
+									<div ng-message-exp="['minlength', 'maxlength', 'pattern']">
+										Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
+									</div>
+								</div>
+								</md-input-container>
+								<md-input-container flex="33" flex-xs="100">
+									<label>Sünniaeg</label>
+									<md-datepicker ng-model="perp.dateOfBirth"></md-datepicker>
+								</md-input-container>
+								
+								<md-input-container flex="33" flex-xs="100">
+									<label>Telefon</label>
+									<input ng-model="perp.phone" name="perpPhone" type="text" ng-pattern="/^\d+$/">
+								<div ng-messages="policeForm.perpPhone.$error" role="alert">
+									<div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
+								</div>
+								</md-input-container>
+							</div>
+
+							
+
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container flex="30" flex-xs="100">
+									<label>E-post</label>
+									<input ng-model="perp.email" type="email" name="perpepost" type="email" md-asterisk>
+								<div ng-messages="policeForm.perpepost.$error" role="alert">
+									<div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
+								</div>
+								</md-input-container>
+								
+								<md-input-container flex flex-xs="100">
+									<label>Aadress</label>
+									<input ng-model="perp.address" type="text">
+								</md-input-container>
+								
+								<md-input-container flex="20" flex-xs="100">
+									<label>Amet</label>
+									<input ng-model="perp.occupation" type="text">
+								</md-input-container>
+							</div>
+
+							
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container flex="100">
+									<label>Tundemärgid</label>
+									<input ng-model="perp.identification" type="text">
+								</md-input-container>
+							</div>
+
+						</div>
+
+						<md-input-container flex="100">
+							<md-button  class="md-raised" ng-click="addNewPerp()">Lisa isik</md-button>
+						</md-input-container>
+
+					</div>
+					<div class="blocks" align="center">
+						<div class="md-block" flex="100">
+							<h3>Tunnistaja(te) andmed</h3>
+						</div>
+
+						<div data-ng-repeat="witness in witnesses" flex="100">
+
+							<div layout="row" flex="100" layout-align="center">
+								<h4>TUNNISTAJA #{{witness.output_id}}</h4>
+								<md-button  class="md-raised" style="margin-top:-1px;" ng-click="removeWitness(witness)">Eemalda</md-button>
+							</div>
+
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container flex="33" flex-xs="100">
+									<label>Eesnimi</label>
+									<input ng-model="witness.firstName" name="witnessFirstName" type="text" md-maxlength="30" md-asterisk>
+								<div ng-messages="policeForm.eitnessFirstName.$error" role="alert">
+								<div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
+								</div>
+								</md-input-container>
+								<md-input-container flex="33" flex-xs="100">
+									<label>Perekonnanimi</label>
+									<input ng-model="witness.lastName" name="witnessLastName" type="text" md-maxlength="30" md-asterisk>
+									<div ng-messages="policeForm.witnessLastName.$error" role="alert">
+										<div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
+									</div>
+								</md-input-container>
+								
+								<md-input-container flex="33" flex-xs="100">
+								<label>Kodakondsus</label>
+								<md-select ng-model="witness.citizenship">
+									<md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
+										{{citizenship.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+							</div>
+
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container flex="33" flex-xs="100">
+									<label>Isikukood</label>
+									<input ng-model="witness.idCode" type="text" name="witnessidCode" type="text" ng-pattern="/^\d+$/" ng-minlength="11"     ng-maxlength="11">
+								<div ng-messages="policeForm.witnessidCode.$error" role="alert">
+									<div ng-message-exp="['minlength', 'maxlength', 'pattern']">
+										Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
+									</div>
+								</div>
+								</md-input-container>
+								<md-input-container flex="33" flex-xs="100">
+									<label>Sünniaeg</label>
+									<md-datepicker ng-model="witness.dateOfBirth"></md-datepicker>
+								</md-input-container>
+								
+								<md-input-container flex="33" flex-xs="100">
+									<label>Telefon</label>
+									<input ng-model="witness.phone" name="witnessPhone" type="text" ng-pattern="/^\d+$/">
+									<div ng-messages="policeForm.witnessPhone.$error" role="alert">
+										<div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
+									</div>
+								</md-input-container>
+							</div>
+
+							
+
+							<div layout="row" layout-align="center" layout-xs="column" flex="100" layout-xs="column">
+								<md-input-container flex="30" flex-xs="100">
+									<label>E-post</label>
+									<input ng-model="witness.email" type="email" name="witnessepost" type="email">
+								<div ng-messages="policeForm.witnessepost.$error" role="alert">
+									<div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
+								</div>
+								</md-input-container>
+								<md-input-container flex flex-xs="100">
+									<label>Aadress</label>
+									<input ng-model="witness.address" type="text">
+								</md-input-container>
+								<md-input-container flex="20" flex-xs="100">
+									<label>Amet</label>
+									<input ng-model="witness.occupation" type="text">
+								</md-input-container>
+							</div>
+
+							<div>
+								
+							</div>
+
+
+							<div layout-xs="column">
+								
+								
+							</div>
+
+						</div>
+
+						<md-input-container flex="100">
+							<md-button class="md-raised" ng-click="addNewWitness()">Lisa tunnistaja</md-button>
+						</md-input-container>
+					</div>
+					<div class="blocks" align="center">
+						<div class="md-block" flex="100">
+							<h3>Täiendavad andmed</h3>
+						</div>
+
+						<md-input-container layout="column"  flex="100">
+							<md-checkbox align="left" ng-model="kokkuleppemenetlus" aria-label="Olen nõus kokkuleppemenetlusega">Olen nõus kokkuleppemenetlusega</md-checkbox>
+							<!--
+							<md-checkbox ng-model="docs_to_email" aria-label="Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile"> <span>Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile</span></md-checkbox>
+							-->
+							<md-checkbox align="left" ng-model="e_toimik" aria-label="Soovin teavet E-Toimiku kaudu https://www.e-toimik.ee/">Soovin teavet E-Toimiku kaudu <a href="https://www.e-toimik.ee/">https://www.e-toimik.ee/</a></md-checkbox>
+						</md-input-container>
+
+						<div>
+							<md-button type="submit" class="md-raised md-primary">Kinnita allkirjastamata</md-button>
+						</div>
                     </div>
-
-                    <div data-ng-repeat="perp in perpetrators" flex="100">
-
-                        <div layout="row" flex="100">
-                            <h4>SÜÜTEO TOIME PANNUD ISIK #{{perp.output_id}}</h4>
-                            <md-button ng-click="removePerp(perp)">Eemalda</md-button>
-                        </div>
-
-                        <div layout-xs="column">
-                            <md-input-container>
-                                <label>Eesnimi</label>
-                                <input name="perpFirstName" ng-model="perp.firstName" type="text" md-maxlength="30" md-asterisk>
-                            <div ng-messages="policeForm.perpFirstName.$error" role="alert">
-                            <div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container>
-                                <label>Perekonnanimi</label>
-                                <input name="perpLastName" ng-model="perp.lastName" type="text" md-maxlength="30" md-asterisk>
-                            <div ng-messages="policeForm.perpLastName.$error" role="alert">
-                            <div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
-                            </div>
-                            </md-input-container>
-                        </div>
-
-                        <div layout-xs="column">
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Isikukood</label>
-                                <input ng-model="perp.idCode" type="text" name="perpidCode" type="text" md-asterisk ng-pattern="/^\d+$/" ng-minlength="11"
-                            ng-maxlength="11">
-                            <div ng-messages="policeForm.perpidCode.$error" role="alert">
-                                <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
-                                    Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
-                                </div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Sünniaeg</label>
-                                <md-datepicker ng-model="perp.dateOfBirth"></md-datepicker>
-                            </md-input-container>
-                        </div>
-
-                        <md-input-container flex="33" flex-xs="100">
-                            <label>Kodakondsus</label>
-                            <md-select ng-model="perp.citizenship">
-                                <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
-                                    {{citizenship.name}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-
-                        <div>
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Amet</label>
-                                <input ng-model="perp.occupation" type="text">
-                            </md-input-container>
-                        </div>
-
-                        <div>
-                            <md-input-container flex="45" flex-xs="100">
-                                <label>Aadress</label>
-                                <input ng-model="perp.address" type="text">
-                            </md-input-container>
-                        </div>
-
-
-                        <div layout-xs="column">
-                            <md-input-container>
-                                <label>E-post</label>
-                                <input ng-model="perp.email" type="email" name="perpepost" type="email" md-asterisk>
-                            <div ng-messages="policeForm.perpepost.$error" role="alert">
-                                <div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container>
-                                <label>Telefon</label>
-                                <input ng-model="perp.phone" name="perpPhone" type="text" ng-pattern="/^\d+$/">
-                            <div ng-messages="policeForm.perpPhone.$error" role="alert">
-                                <div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
-                            </div>
-                            </md-input-container>
-                        </div>
-
-                        <div>
-                            <md-input-container>
-                                <label>Tundemärgid</label>
-                                <input ng-model="perp.identification" type="text">
-                            </md-input-container>
-                        </div>
-
-                    </div>
-
-                    <md-input-container flex="100">
-                        <md-button ng-click="addNewPerp()">Lisa isik</md-button>
-                    </md-input-container>
-
-                    <div class="md-block" flex="100">
-                        <h3>Tunnistaja(te) andmed</h3>
-                    </div>
-
-                    <div data-ng-repeat="witness in witnesses" flex="100">
-
-                        <div layout="row" flex="100">
-                            <h4>TUNNISTAJA #{{witness.output_id}}</h4>
-                            <md-button ng-click="removeWitness(witness)">Eemalda</md-button>
-                        </div>
-
-                        <div layout-xs="column">
-                            <md-input-container>
-                                <label>Eesnimi</label>
-                                <input ng-model="witness.firstName" name="witnessFirstName" type="text" md-maxlength="30" md-asterisk>
-                            <div ng-messages="policeForm.eitnessFirstName.$error" role="alert">
-                            <div ng-message="md-maxlength">Eesnimi ei tohi olla pikem kui 30 tähemärki.</div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container>
-                                <label>Perekonnanimi</label>
-                                <input ng-model="witness.lastName" name="witnessLastName" type="text" md-maxlength="30" md-asterisk>
-                            <div ng-messages="policeForm.witnessLastName.$error" role="alert">
-                            <div ng-message="md-maxlength">Perekonnanimi ei tohi olla pikem kui 30 tähemärki.</div>
-                            </div>
-                            </md-input-container>
-                        </div>
-
-                        <div layout-xs="column">
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Isikukood</label>
-                                <input ng-model="witness.idCode" type="text" name="witnessidCode" type="text" ng-pattern="/^\d+$/" ng-minlength="11"     ng-maxlength="11">
-                            <div ng-messages="policeForm.witnessidCode.$error" role="alert">
-                                <div ng-message-exp="['minlength', 'maxlength', 'pattern']">
-                                    Isikukood peab olema täpselt 11 tähemärki pikk ja sisaldama ainult numbreid.
-                                </div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Sünniaeg</label>
-                                <md-datepicker ng-model="witness.dateOfBirth"></md-datepicker>
-                            </md-input-container>
-                        </div>
-
-                        <md-input-container flex="33" flex-xs="100">
-                            <label>Kodakondsus</label>
-                            <md-select ng-model="witness.citizenship">
-                                <md-option ng-repeat="citizenship in citizenships" value="{{citizenship.id}}">
-                                    {{citizenship.name}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-
-                        <div>
-                            <md-input-container flex="33" flex-xs="100">
-                                <label>Amet</label>
-                                <input ng-model="witness.occupation" type="text">
-                            </md-input-container>
-                        </div>
-
-                        <div>
-                            <md-input-container flex="45" flex-xs="100">
-                                <label>Aadress</label>
-                                <input ng-model="witness.address" type="text">
-                            </md-input-container>
-                        </div>
-
-
-                        <div layout-xs="column">
-                            <md-input-container>
-                                <label>E-post</label>
-                                <input ng-model="witness.email" type="email" name="witnessepost" type="email">
-                            <div ng-messages="policeForm.witnessepost.$error" role="alert">
-                                <div ng-message="email">Vajalik sisestada õige e-maili aadress.</div>
-                            </div>
-                            </md-input-container>
-                            <md-input-container>
-                                <label>Telefon</label>
-                                <input ng-model="witness.phone" name="witnessPhone" type="text" ng-pattern="/^\d+$/">
-                            <div ng-messages="policeForm.witnessPhone.$error" role="alert">
-                                <div ng-message="pattern">Telefoninumber peab sisaldama ainult numberid.</div>
-                            </div>
-                            </md-input-container>
-                        </div>
-
-                    </div>
-
-                    <md-input-container flex="100">
-                        <md-button ng-click="addNewWitness()">Lisa tunnistaja</md-button>
-                    </md-input-container>
-
-
-                    <div class="md-block" flex="100">
-                        <h3>Täiendavad andmed</h3>
-                    </div>
-
-                    <md-input-container layout="column" flex="100">
-                        <md-checkbox ng-model="kokkuleppemenetlus" aria-label="Olen nõus kokkuleppemenetlusega">Olen nõus kokkuleppemenetlusega</md-checkbox>
-                        <md-checkbox ng-model="docs_to_email" aria-label="Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile">Olen nõus, et menetlusega seotud dokumendid edastatakse minu poolt antud e-posti aadressile</md-checkbox>
-                        <md-checkbox ng-model="e_toimik" aria-label="Soovin teavet E-Toimiku kaudu https://www.e-toimik.ee/">Soovin teavet E-Toimiku kaudu <a href="https://www.e-toimik.ee/">https://www.e-toimik.ee/</a></md-checkbox>
-                    </md-input-container>
-
-                    <div>
-                        <md-button type="submit" class="md-raised md-primary">Kinnita allkirjastamata</md-button>
-                    </div>
-
+			
                 </div>
             </form>
             <div layout="column" ng-show="showResult" layout-wrap>

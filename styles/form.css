@@ -5,7 +5,7 @@ h3,h1 {
 }
 
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 700px) {
 	.blocks {
 		 box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 		 width:49%;

@@ -1127,7 +1127,7 @@ md-card {
   height: auto; }
 
 .md-inline-form md-checkbox {
-  margin: 19px 0 18px; }
+  margin-bottom: 33px  }
 
 md-checkbox {
   box-sizing: border-box;
